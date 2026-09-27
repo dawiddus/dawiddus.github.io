@@ -360,20 +360,43 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
 @media (max-width:560px){.insights{grid-template-columns:1fr}}
 .sub-head{margin:70px 0 24px;display:grid;gap:8px}
 .sub-head h3{font-size:clamp(22px,2.6vw,28px)}
-/* role lens */
-.lens{display:flex;flex-wrap:wrap;align-items:center;gap:6px;padding:6px;background:var(--surface);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);margin-bottom:34px;width:max-content;max-width:100%}
-.lens-lbl{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);padding:0 8px 0 6px}
-.lens button{font:inherit;font-size:13.5px;font-weight:600;border:none;background:transparent;color:var(--ink-2);padding:8px 12px;border-radius:10px;cursor:pointer}
-.lens button:hover{background:var(--surface-2);color:var(--ink)}
-.lens button.on{background:var(--brand);color:var(--brand-ink)}
-.lens .lens-share{color:var(--brand);font-weight:600;font-size:12.5px}
-.lens .lens-share:hover{background:var(--brand-soft);color:var(--brand)}
-.hero .swap{transition:opacity .25s ease}
-.hero .swap.fade{opacity:0}
+/* hero: hello + problem picker */
+.hello{display:flex;align-items:center;gap:12px;font-family:var(--serif);font-size:clamp(22px,2.4vw,28px);font-weight:500;margin:0 0 12px;color:var(--ink-2)}
+.hello .tl{display:inline-flex;gap:4px;padding:6px 8px;background:var(--ink);border-radius:999px}
+.hello .tl i{width:9px;height:9px;border-radius:50%;background:#3a4443;animation:tl 3s infinite}
+.hello .tl i:nth-child(1){--c:#e5484d}
+.hello .tl i:nth-child(2){--c:#f5a524;animation-delay:1s}
+.hello .tl i:nth-child(3){--c:#30a46c;animation-delay:2s}
+@keyframes tl{0%,30%{background:var(--c);box-shadow:0 0 8px var(--c)}34%,100%{background:#3a4443;box-shadow:none}}
+.hero h1{font-size:clamp(34px,4.6vw,56px);margin:0 0 18px}
+.rot{display:inline-block;color:var(--brand);border-bottom:3px solid var(--brand-soft);transition:opacity .25s,transform .25s}
+.rot.rot-out{opacity:0;transform:translateY(-8px)}
+.w-red{color:var(--red)}.w-green{color:var(--green)}
+.ask{margin-top:26px}
+.ask-q{font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--brand);font-weight:600;margin:0 0 10px}
+.probs{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+@media (max-width:520px){.probs{grid-template-columns:1fr}}
+.prob{display:flex;gap:12px;align-items:flex-start;text-align:left;font:inherit;color:inherit;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:14px;cursor:pointer;transition:transform .15s,border-color .15s,box-shadow .15s,opacity .2s}
+.prob:hover{transform:translateY(-2px);border-color:var(--brand)}
+.prob .dot{margin-top:7px}
+.prob b{display:block;font-family:var(--serif);font-size:17px;font-weight:650;line-height:1.25}
+.prob small{display:block;font-size:12px;color:var(--ink-3);margin-top:4px}
+.prob.on{border-color:var(--brand);box-shadow:0 0 0 2px var(--brand)}
+.probs.picked .prob:not(.on){opacity:.55}
+.probs.picked .prob:not(.on):hover{opacity:1}
+.dot.b{background:var(--brand)}
+.answer{margin-top:14px;padding:16px 18px;border-radius:14px;background:var(--brand-soft);border-left:4px solid var(--brand);display:none}
+.answer.show{display:block;animation:rise .35s ease}
+@keyframes rise{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.answer p{margin:0 0 12px;font-size:15.5px}
+.answer p b{color:var(--brand)}
+.ans-actions{display:flex;gap:14px;align-items:center;flex-wrap:wrap}
+.btn-sm{padding:9px 14px;font-size:14px}
+.linkish{background:none;border:none;font:inherit;font-size:13.5px;font-weight:600;color:var(--brand);cursor:pointer;padding:0}
+.ask-hint{font-size:13px;color:var(--ink-3);margin:10px 0 0}
 .case .rel{display:none;align-self:flex-start;font-size:12px;font-weight:700;padding:4px 10px;border-radius:999px;background:var(--green-soft);color:var(--green)}
 .case.top .rel{display:inline-flex}
 .case.top{border-color:var(--green)}
-@media (max-width:640px){.lens{width:100%}.lens-lbl{width:100%;padding:4px 6px}.lens button{flex:1 1 auto}}
 
 /* job-ad matcher */
 .match{display:grid;grid-template-columns:.95fr 1.05fr;gap:18px;align-items:start}
@@ -421,41 +444,40 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
 <main id="top">
 <!-- HERO -->
 <section class="hero">
-  <div class="wrap"><div class="lens" role="group" aria-label="Show the profile for the role you are hiring for"><span class="lens-lbl">Hiring for</span><button data-lens="po" class="on">Product Owner</button><button data-lens="gov">Data Governance &amp; Quality</button><button data-lens="pm">Project / Program</button><button data-lens="lead">Team Lead</button><button class="lens-share" id="lensShare">🔗 Copy link</button></div></div>
   <div class="wrap hero-grid">
     <div>
-      <span class="kicker swap" id="heroKicker">Product Owner · Data &amp; AI · Düsseldorf</span>
-      <h1 class="swap" id="heroH1">I keep data products on track, and bring them <em>back to green.</em></h1>
-      <p class="lede swap" id="heroLede">12 years in data, from SAP master data to steering committees. Today I own a governed Azure data model at ALDI SÜD that powers harmonized financial reporting and <strong>AI‑driven Conversational Analytics</strong>. AI can write the user story. Someone still has to own the outcome. That's my job.</p>
-      <div class="actions">
-        <a class="btn btn-primary" href="#refiner">Try my Story Refiner →</a>
-        <a class="btn btn-ghost" href="#fast-lane">Recruiter fast lane</a>
-      </div>
-      <div class="hero-meta swap" id="heroChips">
-        <span class="chip">Scrum · Backlog · Roadmaps</span>
-        <span class="chip">Azure · Databricks · Tableau</span>
-        <span class="chip">Data Governance · Collibra</span>
-        <span class="chip">Steering &amp; Risk</span>
+      <p class="hello"><span class="tl" aria-hidden="true"><i></i><i></i><i></i></span>Hi, I'm Dawid.</p>
+      <h1>I bring <span class="rot" id="rotWord">projects</span><br>from <span class="w-red">red</span> to <span class="w-green">green</span>, and help teams ship <em>AI features people trust.</em></h1>
+      <p class="lede">Product Owner at ALDI SÜD in Düsseldorf. 12 years in data, from SAP master data to steering committees with senior leadership.</p>
+      <div class="ask">
+        <p class="ask-q">So, what's on your plate?</p>
+        <div class="probs" id="probs" role="group" aria-label="Pick the challenge you are hiring for">
+          <button class="prob" data-lens="pm"><i class="dot r"></i><span><b>“Our project is red.”</b><small>Project · Program · PMO</small></span></button>
+          <button class="prob" data-lens="gov"><i class="dot a"></i><span><b>“Nobody trusts our data.”</b><small>Data Governance · Quality · MDM</small></span></button>
+          <button class="prob" data-lens="po"><i class="dot g"></i><span><b>“Our data product needs an owner.”</b><small>Product Owner · Product Manager</small></span></button>
+          <button class="prob" data-lens="lead"><i class="dot b"></i><span><b>“My team needs a leader.”</b><small>Team Lead · Data &amp; BI</small></span></button>
+        </div>
+        <div class="answer" id="answer" aria-live="polite">
+          <p id="ansTxt"></p>
+          <div class="ans-actions"><a href="#cases" class="btn btn-primary btn-sm">See the proof ↓</a><button class="linkish" id="lensShare">🔗 Copy link to this version</button></div>
+        </div>
+        <p class="ask-hint" id="askHint">Pick one, and the page shows how I'd handle it.</p>
       </div>
     </div>
 
     <div class="card board" aria-live="polite">
       <div class="board-top">
-        <span class="board-title">Initiative status</span>
+        <span class="board-title">From red to green</span>
         <span class="status-pill r" id="pill"><span class="dot r" id="pillDot"></span><span id="pillTxt">RED</span></span>
       </div>
-      <h3>Global KPI harmonization</h3>
-      <p class="muted small" style="margin:0">Hybrid internal + external team · Azure / Databricks / Tableau</p>
-      <ol class="steps" id="steps">
-        <li><span class="tick">✓</span><div><b>Re-cut the team</b><span>Stream Leads with clear, individual ownership</span></div></li>
-        <li><span class="tick">✓</span><div><b>Re-scope with stakeholders</b><span>Agreed scope &amp; delivery scenarios</span></div></li>
-        <li><span class="tick">✓</span><div><b>Back‑to‑Yellow / Back‑to‑Green plan</b><span>Concrete mitigation measures, owned &amp; tracked</span></div></li>
-        <li><span class="tick">✓</span><div><b>Direct line to Management</b><span>Regular steering, transparent decisions</span></div></li>
-      </ol>
-      <div class="board-foot"><span>A real story from my 2025–26 role</span><button class="replay" id="replay">↻ Replay</button></div>
+      <h3 id="boardTitle">Global KPI harmonization</h3>
+      <p class="muted small" style="margin:0" id="boardSub">Hybrid internal + external team · Azure / Databricks / Tableau</p>
+      <ol class="steps" id="steps"></ol>
+      <div class="board-foot"><span id="boardFoot">A real story from my 2025–26 role</span><button class="replay" id="replay">↻ Replay</button></div>
     </div>
   </div>
 </section>
+
 
 <!-- PROOF STRIP -->
 <div class="proof">
@@ -536,14 +558,14 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
     <div class="hub reveal" id="hub">
       <svg class="wires" aria-hidden="true"></svg>
       <div class="hub-core" id="hubCore"><span>Product Owner</span><b>Dawid</b><i>+ AI in the loop</i></div>
-      <button class="node-btn now" style="grid-column:1;grid-row:1" data-s="now" data-what="How large language models work, where they fail (hallucinations, bias, outdated knowledge), and the cost and speed trade-offs." data-how="Generative AI for Everyone (DeepLearning.AI, free to audit)." data-team="We choose AI use cases that are worth building, and drop the ones that aren't, before a sprint is spent on them."><div class="top"><span class="lab">01 · Foundations</span><i class="st now"></i></div><h3>AI literacy</h3><p>What GenAI can and can't do</p></button>
-      <button class="node-btn now" style="grid-column:2;grid-row:1" data-s="now" data-what="The 4D framework: Delegation, Description, Discernment, Diligence. When to hand work to AI, how to brief it, how to judge the output, and who stays accountable." data-how="AI Fluency: Framework &amp; Foundations (Anthropic Academy, free)." data-team="A shared language for the whole team, so using AI is a deliberate choice and not a habit nobody checks."><div class="top"><span class="lab">02 · Working with AI</span><i class="st now"></i></div><h3>AI fluency</h3><p>Delegation, Description, Discernment, Diligence</p></button>
+      <button class="node-btn now" style="grid-column:1;grid-row:1" data-s="now" data-what="How large language models work, where they fail (hallucinations, bias, outdated knowledge), and the cost and speed trade-offs." data-how="Generative AI for Everyone (DeepLearning.AI)." data-team="We choose AI use cases that are worth building, and drop the ones that aren't, before a sprint is spent on them."><div class="top"><span class="lab">01 · Foundations</span><i class="st now"></i></div><h3>AI literacy</h3><p>What GenAI can and can't do</p></button>
+      <button class="node-btn now" style="grid-column:2;grid-row:1" data-s="now" data-what="The 4D framework: Delegation, Description, Discernment, Diligence. When to hand work to AI, how to brief it, how to judge the output, and who stays accountable." data-how="AI Fluency: Framework &amp; Foundations (Anthropic Academy)." data-team="A shared language for the whole team, so using AI is a deliberate choice and not a habit nobody checks."><div class="top"><span class="lab">02 · Working with AI</span><i class="st now"></i></div><h3>AI fluency</h3><p>Delegation, Description, Discernment, Diligence</p></button>
       <button class="node-btn done" style="grid-column:3;grid-row:1" data-s="done" data-what="Data models, harmonized KPI definitions, lineage, data ownership and data quality rules." data-how="Years on the job: Collibra and SAP MDG at Takeda, Data Quality Reconciliation and global KPI harmonization at ALDI SÜD." data-team="The AI answers from data the business already trusts. That's the part most AI projects underestimate."><div class="top"><span class="lab">03 · Data</span><i class="st done"></i></div><h3>Governed data for AI</h3><p>Ownership, quality, lineage, KPIs</p></button>
       <button class="node-btn now" style="grid-column:1;grid-row:2" data-s="now" data-what="Acceptance criteria for features whose output varies: evaluation sets of real questions, accuracy thresholds, and what happens when the AI is unsure." data-how="Practising on AI-style stories (see the Story Refiner above) and applying course material to my backlog work." data-team="AI features get a real Definition of Done, so 'it looked fine in the demo' is never the release criterion."><div class="top"><span class="lab">04 · Product craft</span><i class="st now"></i></div><h3>AI user stories &amp; evals</h3><p>Testable criteria for AI features</p></button>
       <button class="node-btn done" style="grid-column:3;grid-row:2" data-s="done" data-what="Letting business users ask questions in plain language on top of a governed data model." data-how="On the job: Product Owner for the unified financial data model behind Conversational Analytics at ALDI SÜD." data-team="I know what it takes to make 'just ask the data' actually work: definitions, data quality and trust first."><div class="top"><span class="lab">05 · AI product</span><i class="st done"></i></div><h3>Conversational Analytics</h3><p>Plain-language questions on governed data</p></button>
-      <button class="node-btn next" style="grid-column:1;grid-row:3" data-s="next" data-what="Using GenAI in delivery: refinement drafts, status reports, risk logs, meeting summaries and stakeholder updates." data-how="Generative AI Overview for Project Managers (PMI, free)." data-team="Less time on admin, more time with users and the team."><div class="top"><span class="lab">06 · Delivery</span><i class="st next"></i></div><h3>AI in delivery</h3><p>GenAI for refinement, reporting, risks</p></button>
+      <button class="node-btn next" style="grid-column:1;grid-row:3" data-s="next" data-what="Using GenAI in delivery: refinement drafts, status reports, risk logs, meeting summaries and stakeholder updates." data-how="Generative AI Overview for Project Managers (PMI)." data-team="Less time on admin, more time with users and the team."><div class="top"><span class="lab">06 · Delivery</span><i class="st next"></i></div><h3>AI in delivery</h3><p>GenAI for refinement, reporting, risks</p></button>
       <button class="node-btn next" style="grid-column:2;grid-row:3" data-s="next" data-what="Risk categories of AI use cases, transparency to users, human oversight and data privacy, including the EU AI Act." data-how="Builds on my data governance background; responsible-AI material from the courses on this path." data-team="Compliance questions get answered in refinement, not two weeks before go-live."><div class="top"><span class="lab">07 · Trust</span><i class="st next"></i></div><h3>Responsible AI</h3><p>EU AI Act, oversight, privacy</p></button>
-      <button class="node-btn next" style="grid-column:3;grid-row:3" data-s="next" data-what="How our platforms deliver GenAI: retrieval (RAG), vector search, model serving and Azure AI services." data-how="Databricks Generative AI Fundamentals and the Microsoft Learn AI-900 learning path (both free)." data-team="Better conversations with engineers, realistic estimates, and fewer surprises in the architecture."><div class="top"><span class="lab">08 · Platform</span><i class="st next"></i></div><h3>GenAI on our stack</h3><p>Databricks &amp; Azure AI basics</p></button>
+      <button class="node-btn next" style="grid-column:3;grid-row:3" data-s="next" data-what="How our platforms deliver GenAI: retrieval (RAG), vector search, model serving and Azure AI services." data-how="Databricks Generative AI Fundamentals and Microsoft Azure AI Fundamentals (AI-900)." data-team="Better conversations with engineers, realistic estimates, and fewer surprises in the architecture."><div class="top"><span class="lab">08 · Platform</span><i class="st next"></i></div><h3>GenAI on our stack</h3><p>Databricks &amp; Azure AI basics</p></button>
     </div>
 
     <div class="card hub-detail" id="hubDetail" aria-live="polite">
@@ -553,14 +575,14 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
       <div class="team"><h4>What it gives the team</h4><p id="hdTeam"></p></div>
     </div>
 
-    <div class="sub-head reveal"><span class="kicker">The learning path</span><h3>Free, practical, and built around my stack</h3><p class="muted" style="margin:0">One line from what I already do on the job to a PO‑specific AI certification.</p></div>
+    <div class="sub-head reveal"><span class="kicker">The learning path</span><h3>The path I chose as a Product Owner</h3><p class="muted" style="margin:0">Each step picked for one reason: it makes the team better at building AI on our data platform.</p></div>
     <div class="metro">
       <div class="stop done reveal"><span class="pin"></span><div class="card"><span class="prov">On the job · ALDI SÜD</span><h3>Conversational Analytics on a governed data model</h3><span class="status-tag done">Proven</span><p><b>Team gets:</b> a PO who knows AI is only as good as its data</p></div></div>
-      <div class="stop now reveal"><span class="pin"></span><div class="card"><span class="prov">Anthropic Academy</span><h3>AI Fluency: Framework &amp; Foundations</h3><span class="free">Free</span><p><b>Team gets:</b> the 4D framework as a shared way of working with AI</p></div></div>
-      <div class="stop now reveal"><span class="pin"></span><div class="card"><span class="prov">DeepLearning.AI · Coursera</span><h3>Generative AI for Everyone</h3><span class="free">Free to audit</span><p><b>Team gets:</b> better use-case choices and honest expectations</p></div></div>
-      <div class="stop next reveal"><span class="pin"></span><div class="card"><span class="prov">PMI</span><h3>Generative AI Overview for Project Managers</h3><span class="free">Free · PDUs</span><p><b>Team gets:</b> GenAI in refinement, reporting and risk logs</p></div></div>
-      <div class="stop next reveal"><span class="pin"></span><div class="card"><span class="prov">Databricks Academy</span><h3>Generative AI Fundamentals</h3><span class="free">Free accreditation</span><p><b>Team gets:</b> a PO who speaks the platform team's language</p></div></div>
-      <div class="stop next reveal"><span class="pin"></span><div class="card"><span class="prov">Microsoft Learn</span><h3>Azure AI Fundamentals (AI‑900 path)</h3><span class="free">Free learning path</span><p><b>Team gets:</b> the Azure AI services next to our data platform</p></div></div>
+      <div class="stop now reveal"><span class="pin"></span><div class="card"><span class="prov">Anthropic Academy</span><h3>AI Fluency: Framework &amp; Foundations</h3><span class="status-tag now">In progress</span><p><b>Team gets:</b> the 4D framework as a shared way of working with AI</p></div></div>
+      <div class="stop now reveal"><span class="pin"></span><div class="card"><span class="prov">DeepLearning.AI · Coursera</span><h3>Generative AI for Everyone</h3><span class="status-tag now">In progress</span><p><b>Team gets:</b> better use-case choices and honest expectations</p></div></div>
+      <div class="stop next reveal"><span class="pin"></span><div class="card"><span class="prov">PMI</span><h3>Generative AI Overview for Project Managers</h3><span class="status-tag next">Planned</span><p><b>Team gets:</b> GenAI in refinement, reporting and risk logs</p></div></div>
+      <div class="stop next reveal"><span class="pin"></span><div class="card"><span class="prov">Databricks Academy</span><h3>Generative AI Fundamentals</h3><span class="status-tag next">Planned</span><p><b>Team gets:</b> a PO who speaks the platform team's language</p></div></div>
+      <div class="stop next reveal"><span class="pin"></span><div class="card"><span class="prov">Microsoft Learn</span><h3>Azure AI Fundamentals (AI‑900)</h3><span class="status-tag next">Planned</span><p><b>Team gets:</b> the Azure AI services next to our data platform</p></div></div>
       <div class="stop goal reveal"><span class="pin"></span><div class="card"><span class="prov">Scrum.org · goal</span><h3>PSPO‑AI Essentials certification</h3><span class="status-tag next">Goal</span><p><b>Team gets:</b> Scrum product ownership and AI, formally combined</p></div></div>
     </div>
 
@@ -852,15 +874,16 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
   function toast(t){var el=document.getElementById('toast');el.textContent=t;el.classList.add('show');setTimeout(function(){el.classList.remove('show')},1800);}
 
   // status board animation
-  var steps=[].slice.call(document.querySelectorAll('#steps li')), pill=document.getElementById('pill'), pd=document.getElementById('pillDot'), pt=document.getElementById('pillTxt'), timers=[];
+  var pill=document.getElementById('pill'), pd=document.getElementById('pillDot'), pt=document.getElementById('pillTxt'), timers=[];
   function setPill(c,t){pill.className='status-pill '+c;pd.className='dot '+c;pt.textContent=t;}
   function play(){
+    var steps=[].slice.call(document.querySelectorAll('#steps li'));
     timers.forEach(clearTimeout);timers=[];
+    if(matchMedia('(prefers-reduced-motion: reduce)').matches){steps.forEach(function(s){s.classList.add('on')});setPill('g','GREEN');return;}
     steps.forEach(function(s){s.classList.remove('on')});setPill('r','RED');
     steps.forEach(function(s,i){timers.push(setTimeout(function(){s.classList.add('on'); if(i===1)setPill('a','AMBER'); if(i===3)setPill('g','GREEN');},900+i*1100));});
   }
   document.getElementById('replay').addEventListener('click',play);
-  if(matchMedia('(prefers-reduced-motion: reduce)').matches){steps.forEach(function(s){s.classList.add('on')});setPill('g','GREEN');}else play();
 
   // reveal
   var io='IntersectionObserver' in window? new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}})},{threshold:.12}):null;
@@ -1000,60 +1023,76 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
   }
   boxes.forEach(function(b){b.addEventListener('click',function(){var on=b.classList.toggle('ok');b.setAttribute('aria-pressed',on?'true':'false');cvUpdate();})});
 
-  // ---------- Role lens ----------
+  // ---------- Role lens (hero problem picker) ----------
   var LENS={
-    po:{name:'Product Owner',title:'Dawid Ciesielski · Product Owner, Data & AI',kicker:'Product Owner · Data &amp; AI · Düsseldorf',
-      h1:'I keep data products on track, and bring them <em>back to green.</em>',
-      lede:'12 years in data, from SAP master data to steering committees. Today I own a governed Azure data model at ALDI SÜD that powers harmonized financial reporting and <strong>AI‑driven Conversational Analytics</strong>. AI can write the user story. Someone still has to own the outcome. That\'s my job.',
-      chips:['Scrum · Backlog · Roadmaps','Azure · Databricks · Tableau','Data Governance · Collibra','Steering &amp; Risk'],cases:['fin','kpi','dq','tak'],
-      pitch:'Dawid Ciesielski is a Product Owner at ALDI SÜD with 12 years in data. He steers teams delivering governed data products on Azure, Databricks and Tableau, including the data model behind AI‑driven Conversational Analytics. He has brought a global KPI initiative back to green, built data governance from scratch at Takeda, and runs Sprint Reviews and steering committees with senior leadership. Based in Düsseldorf.',
-      fit:[['g','Senior / Data Product Owner','data, analytics or AI'],['g','Product Manager','data lakehouse, analytics, digital products'],['g','IT Product Owner','business and IT alignment'],['a','Product Analytics Manager','with a delivery focus']]},
-    gov:{name:'Data Governance & Quality',title:'Dawid Ciesielski · Data Governance & Data Quality',kicker:'Data Governance · Data Quality · Master Data',
-      h1:'Trusted data is a product. <em>I\'ve built it for 12 years.</em>',
-      lede:'From hands‑on SAP master data to Collibra, SAP MDG, data ownership models and a Data Quality Reconciliation Solution that stops store incidents at ALDI SÜD. Governance that people actually use, and that <strong>AI can safely build on</strong>.',
-      chips:['Collibra · Syniti · SAP MDG','Data quality rules &amp; reconciliation','Data ownership &amp; operating models','Metadata &amp; lineage'],cases:['tak','dq','kpi','fin'],
-      pitch:'Dawid Ciesielski is a data governance and data quality leader with 12 years in data. He implemented Collibra and SAP MDG 1909 at Takeda, designed the governance operating model and data ownership framework, owned the Collibra catalog and a Data Quality Reconciliation Solution at ALDI SÜD, and started out in hands‑on SAP master data. Based in Düsseldorf.',
-      fit:[['g','Data Governance Manager / Lead','incl. Data &amp; AI Governance'],['g','Data Quality Manager','rules, reconciliation, monitoring'],['g','Master Data Management Lead','SAP, MDG, migrations'],['g','Data Foundations / Metadata Lead','catalogs, lineage, standards']]},
-    pm:{name:'Project / Program',title:'Dawid Ciesielski · Project & Program Manager, Data',kicker:'Project · Program · PMO · Transformation',
-      h1:'Red projects are where I do my <em>best work.</em>',
-      lede:'Steering committees, Back‑to‑Green plans, delivery roadmaps, vendor contracts and SoWs, hybrid internal and external teams. I bring structure, an <strong>honest status</strong>, and delivery that business and IT both trust.',
-      chips:['Steering &amp; RAG reporting','Risk &amp; mitigation','Vendor management · SoWs','Business &amp; IT alignment'],cases:['kpi','fin','dq','tak'],
+    pm:{name:'Project / Program',word:'projects',title:'Dawid Ciesielski · Project & Program Manager, Data',
+      answer:'Then you need someone who says “we\'re red” out loud, and then fixes it. I took a global KPI initiative at ALDI SÜD back to green with a clear plan, named owners and an honest line to Management. <b>Where AI helps:</b> faster status reports and risk logs, while the decisions stay human.',
+      board:{t:'Global KPI harmonization',s:'Hybrid internal + external team · Azure / Databricks / Tableau',f:'A real story from my 2025–26 role',steps:[['Re-cut the team','Stream Leads with clear, individual ownership'],['Re-scope with stakeholders','Agreed scope &amp; delivery scenarios'],['Back‑to‑Yellow / Back‑to‑Green plan','Concrete mitigation measures, owned &amp; tracked'],['Direct line to Management','Regular steering, transparent decisions']]},
+      cases:['kpi','fin','dq','tak'],
       pitch:'Dawid Ciesielski is a delivery leader at ALDI SÜD with 12 years in data and IT. He brought a global KPI harmonization initiative from red back to green, reports to Strategic & Investment Steering with senior leadership, manages vendors through contracts, SoWs and value assurance, and has coordinated SAP migrations across countries. Based in Düsseldorf.',
       fit:[['g','Senior Project / Program Manager','data, IT or digital'],['g','PMO Manager','governance, reporting, steering'],['g','Transformation Manager','data transformation programmes'],['g','IT Business Partner','business and IT alignment']]},
-    lead:{name:'Team Lead',title:'Dawid Ciesielski · Team Lead, Data & Governance',kicker:'Team Lead · Data Management · BI · Governance',
-      h1:'I build teams where ownership is clear and <em>progress is visible.</em>',
-      lede:'Stream Lead structures, service ownership, vendor teams and hybrid squads. Plus a trained teacher\'s instinct for <strong>growing people</strong>, from Data Literacy series to hands‑on SAP trainings.',
-      chips:['Team structure &amp; ownership','Service ownership · KPIs','Coaching &amp; data literacy','Hybrid internal/external teams'],cases:['kpi','dq','tak','fin'],
+    gov:{name:'Data Governance & Quality',word:'your data',title:'Dawid Ciesielski · Data Governance & Data Quality',
+      answer:'Then start with ownership, not tools. I built data governance at Takeda from the ground up (Collibra, SAP MDG, data owners) and owned a Data Quality Reconciliation Solution at ALDI SÜD. <b>Where AI helps:</b> AI is only as trustworthy as the data under it, so this is where AI readiness starts.',
+      board:{t:'Data issues hitting store operations',s:'Master data · Collibra · SAP MDG · Data quality',f:'Based on my work at Takeda and ALDI SÜD',steps:[['Name the owners','Data ownership across business and governance teams'],['Write the rules','Business and data quality rules in one governed catalog'],['Catch it automatically','Reconciliation flags inconsistencies before they reach stores'],['Teach it','Data Literacy training so people actually use it']]},
+      cases:['tak','dq','kpi','fin'],
+      pitch:'Dawid Ciesielski is a data governance and data quality leader with 12 years in data. He implemented Collibra and SAP MDG 1909 at Takeda, designed the governance operating model and data ownership framework, owned the Collibra catalog and a Data Quality Reconciliation Solution at ALDI SÜD, and started out in hands‑on SAP master data. Based in Düsseldorf.',
+      fit:[['g','Data Governance Manager / Lead','incl. Data &amp; AI Governance'],['g','Data Quality Manager','rules, reconciliation, monitoring'],['g','Master Data Management Lead','SAP, MDG, migrations'],['g','Data Foundations / Metadata Lead','catalogs, lineage, standards']]},
+    po:{name:'Product Owner',word:'data products',title:'Dawid Ciesielski · Product Owner, Data & AI',
+      answer:'Then you need someone who owns the outcome, not just the backlog. Since 2024 I\'ve owned data products at ALDI SÜD, including the governed data model behind AI‑driven Conversational Analytics. <b>Where AI helps:</b> the business asks questions in plain language and gets answers from data it can trust.',
+      board:{t:'Governed data for AI‑driven analytics',s:'Azure Data Platform · Conversational Analytics',f:'A real story from my current role',steps:[['Agree what “done” means','Acceptance Criteria &amp; DoD set with the end customer'],['One backlog, one priority','Scope and timelines aligned with stakeholders'],['Show it every sprint','Sprint Reviews for business and end users'],['Report to the top','Delivery, risks and mitigations in Investment Steering']]},
+      cases:['fin','kpi','dq','tak'],
+      pitch:'Dawid Ciesielski is a Product Owner at ALDI SÜD with 12 years in data. He steers teams delivering governed data products on Azure, Databricks and Tableau, including the data model behind AI‑driven Conversational Analytics. He has brought a global KPI initiative back to green, built data governance from scratch at Takeda, and runs Sprint Reviews and steering committees with senior leadership. Based in Düsseldorf.',
+      fit:[['g','Senior / Data Product Owner','data, analytics or AI'],['g','Product Manager','data lakehouse, analytics, digital products'],['g','IT Product Owner','business and IT alignment'],['a','Product Analytics Manager','with a delivery focus']]},
+    lead:{name:'Team Lead',word:'teams',title:'Dawid Ciesielski · Team Lead, Data & Governance',
+      answer:'Then you need clear ownership and visible progress. I restructured a hybrid internal/external team into Stream Leads, ran a data service as IT Service Owner, and I\'m a trained teacher who likes growing people. <b>Where AI helps:</b> less admin for the team, more time for the work that matters.',
+      board:{t:'A hybrid team without clear ownership',s:'Internal + external team · global initiative',f:'Based on my ALDI SÜD roles',steps:[['Re-cut the team','Stream Leads with individual ownership'],['Make work visible','A delivery roadmap and priorities everyone can see'],['Vendors as partners','Governance models, SoWs, value assurance'],['Grow the people','Training, enablement, Data Literacy']]},
+      cases:['kpi','dq','tak','fin'],
       pitch:'Dawid Ciesielski leads data teams at ALDI SÜD. He restructured a hybrid internal/external team into Stream Leads with clear ownership, ran the Data Quality Service as IT Service Owner, led a dedicated team for P&G North America earlier in his career, and is a trained teacher who has run Data Literacy programmes. Based in Düsseldorf.',
       fit:[['g','Team Lead Data Management / Operations','incl. master data'],['g','Team Lead BI &amp; Insights','enablement and adoption'],['g','Team Lead Data &amp; AI Governance','governance with delivery'],['a','Head of Data Governance','a step up, with a strong team']]}
   };
-  var lensBtns=[].slice.call(document.querySelectorAll('.lens [data-lens]'));
-  function setLens(k,user){
+  var probs=[].slice.call(document.querySelectorAll('.prob')), rot=document.getElementById('rotWord'), rotTimer=null;
+  function setWord(w){ if(rot.textContent===w) return; rot.classList.add('rot-out'); setTimeout(function(){rot.textContent=w;rot.classList.remove('rot-out')},250); }
+  function fillBoard(L){
+    var B=L.board;
+    document.getElementById('boardTitle').textContent=B.t;
+    document.getElementById('boardSub').textContent=B.s;
+    document.getElementById('boardFoot').textContent=B.f;
+    document.getElementById('steps').innerHTML=B.steps.map(function(x){return '<li><span class="tick">✓</span><div><b>'+x[0]+'</b><span>'+x[1]+'</span></div></li>'}).join('');
+    play();
+  }
+  function setLens(k,user,mark){
     if(!LENS[k]) k='po'; var L=LENS[k];
-    lensBtns.forEach(function(b){var on=b.getAttribute('data-lens')===k;b.classList.toggle('on',on);b.setAttribute('aria-pressed',on?'true':'false')});
-    var sw=[].slice.call(document.querySelectorAll('.hero .swap'));
-    function fill(){
-      document.getElementById('heroKicker').innerHTML=L.kicker;
-      document.getElementById('heroH1').innerHTML=L.h1;
-      document.getElementById('heroLede').innerHTML=L.lede;
-      document.getElementById('heroChips').innerHTML=L.chips.map(function(c){return '<span class="chip">'+c+'</span>'}).join('');
-      sw.forEach(function(e){e.classList.remove('fade')});
+    if(mark){
+      clearInterval(rotTimer);
+      probs.forEach(function(b){var on=b.getAttribute('data-lens')===k;b.classList.toggle('on',on);b.setAttribute('aria-pressed',on?'true':'false')});
+      document.getElementById('probs').classList.add('picked');
+      setWord(L.word);
+      document.getElementById('ansTxt').innerHTML=L.answer;
+      var ans=document.getElementById('answer'); ans.classList.remove('show'); void ans.offsetWidth; ans.classList.add('show');
+      document.getElementById('askHint').style.display='none';
+      fillBoard(L);
+      document.title=L.title;
     }
-    if(user){sw.forEach(function(e){e.classList.add('fade')});setTimeout(fill,220);}else fill();
     document.getElementById('pitchTxt').textContent=L.pitch;
     document.getElementById('fitList').innerHTML=L.fit.map(function(f){return '<li><span class="dot '+f[0]+'"></span><span><b>'+f[1]+'</b>, '+f[2]+'</span></li>'}).join('');
     var list=document.getElementById('caseList');
     L.cases.forEach(function(id,i){var a=list.querySelector('[data-case="'+id+'"]'); if(a){a.classList.toggle('top',i===0); list.appendChild(a);}});
-    document.title=L.title;
-    if(user){try{var u=new URL(location.href); if(k==='po')u.searchParams.delete('role'); else u.searchParams.set('role',k); u.hash=''; history.replaceState(null,'',u.toString());}catch(e){}}
+    if(user){try{var u=new URL(location.href); u.searchParams.set('role',k); u.hash=''; history.replaceState(null,'',u.toString());}catch(e){}}
   }
-  lensBtns.forEach(function(b){b.addEventListener('click',function(){setLens(b.getAttribute('data-lens'),true)})});
+  probs.forEach(function(b){b.addEventListener('click',function(){setLens(b.getAttribute('data-lens'),true,true)})});
   document.getElementById('lensShare').addEventListener('click',function(){
     var t=location.href.split('#')[0];
     if(navigator.clipboard){navigator.clipboard.writeText(t).then(function(){toast('Link to this version copied')},function(){toast(t)});}else toast(t);
   });
   var startRole=null; try{startRole=new URLSearchParams(location.search).get('role');}catch(e){}
-  setLens(startRole||'po',false);
+  if(startRole && LENS[startRole]){ setLens(startRole,false,true); }
+  else {
+    setLens('po',false,false); fillBoard(LENS.pm);
+    if(!matchMedia('(prefers-reduced-motion: reduce)').matches){
+      var words=['projects','data products','your data','teams','AI features'], wi=0;
+      rotTimer=setInterval(function(){wi=(wi+1)%words.length;setWord(words[wi])},2600);
+    }
+  }
 
   // ---------- Job ad matcher ----------
   var EV=[
@@ -1099,7 +1138,7 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
     if(gaps.length) h+='<h4 class="mh">Not on my CV yet, happy to discuss</h4><ul class="m-list m-gaps">'+gaps.map(function(g){return '<li>'+esc(g)+'</li>'}).join('')+'</ul>';
     h+='<div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:18px"><button class="btn btn-primary" id="mLens">See my '+esc(LENS[best].name)+' profile ↑</button><a class="btn btn-ghost" href="#contact">Contact me</a></div>';
     out.innerHTML=h;
-    document.getElementById('mLens').addEventListener('click',function(){setLens(best,true);window.scrollTo({top:0,behavior:'smooth'});});
+    document.getElementById('mLens').addEventListener('click',function(){setLens(best,true,true);window.scrollTo({top:0,behavior:'smooth'});});
     if(window.innerWidth<900) out.scrollIntoView({behavior:'smooth',block:'start'});
   }
   document.getElementById('matchBtn').addEventListener('click',runMatch);
