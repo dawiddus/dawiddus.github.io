@@ -11,7 +11,7 @@
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230f3d3e'/%3E%3Ccircle cx='10' cy='16' r='3' fill='%23e5484d'/%3E%3Ccircle cx='16' cy='16' r='3' fill='%23f5a524'/%3E%3Ccircle cx='22' cy='16' r='3' fill='%2330a46c'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,650&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,650&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&family=Caveat:wght@500;700&display=swap" rel="stylesheet">
 <style>
 :root{
   --bg:#f7f5f0; --surface:#ffffff; --surface-2:#efece4; --ink:#16201f; --ink-2:#4a5654; --ink-3:#7a8583;
@@ -391,28 +391,32 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
 .hero-visual.board-on .board-pane{opacity:1;transform:none;pointer-events:auto}
 .hero-visual.board-on .ring-pane{opacity:0;transform:scale(.96);pointer-events:none}
 .back-ring{display:block;margin:12px auto 0}
-.ring{position:relative;width:100%;max-width:440px;aspect-ratio:1/1;margin:0 auto}
-.ring svg{width:100%;height:100%;display:block;overflow:visible}
-.ring .track{fill:none;stroke:var(--line);stroke-width:2}
-.ring .core{fill:var(--surface);stroke:var(--line);stroke-width:1.5}
-.ring .s-red{stop-color:var(--red)}.ring .s-amber{stop-color:var(--amber)}.ring .s-green{stop-color:var(--green)}.ring .s-brand{stop-color:var(--brand)}
-.ring .initials{font-family:var(--sans);font-weight:800;font-size:92px;letter-spacing:-4px;fill:url(#dcGrad)}
-.ring .core-sub{font-family:var(--mono);font-size:11px;letter-spacing:2px;fill:var(--ink-3)}
-.ring .arc{fill:none;stroke:url(#arcGrad);stroke-width:7;stroke-linecap:round;stroke-dasharray:1;stroke-dashoffset:1;animation:draw 2.2s .3s cubic-bezier(.6,0,.2,1) forwards}
-.ring .dots{fill:none;stroke:#fff;stroke-width:4;stroke-linecap:round;stroke-dasharray:0 .05;opacity:0;animation:fadein .6s 2.3s forwards}
-.ring .arrow{fill:var(--green);opacity:0;animation:fadein .4s 2.4s forwards}
-@keyframes draw{to{stroke-dashoffset:0}}
-@keyframes fadein{to{opacity:.85}}
-.ms{position:absolute;transform:translate(-50%,-50%);background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:5px 11px;text-align:center;box-shadow:var(--shadow);white-space:nowrap;opacity:0;animation:pop .5s forwards;line-height:1.3}
-.ms small{display:block;font-family:var(--mono);font-size:10.5px;color:var(--ink-3)}
-.ms b{font-size:12.5px;font-weight:700}
-.ms.now{border:2px solid var(--green);box-shadow:0 0 0 4px var(--green-soft)}
-.ms.now small{color:var(--green);font-weight:600}
-@keyframes pop{from{opacity:0;transform:translate(-50%,-35%)}to{opacity:1;transform:translate(-50%,-50%)}}
-@media (max-width:900px){.ring{max-width:380px}.board-pane{display:none}.hero-visual.board-on .board-pane{display:block}.hero-visual.board-on .ring-pane{display:none}}
-@media (max-width:480px){.ring{max-width:290px}.ms.now{top:-3%!important;left:78%!important}}
-@media (max-width:480px){.ms{padding:4px 8px}.ms b{font-size:11px}.ms small{font-size:9.5px}}
-@media (prefers-reduced-motion:reduce){.ring .arc{stroke-dashoffset:0}.ring .dots,.ring .arrow{opacity:.85}.ms{opacity:1}}
+.doodle{position:relative;width:100%;max-width:440px;aspect-ratio:1/1;margin:0 auto;container-type:inline-size}
+.doodle svg{width:100%;height:100%;display:block;overflow:visible}
+.doodle .house{fill:#1b2322;stroke:var(--ink);stroke-width:2.6;stroke-linejoin:round}
+.doodle .sk{fill:none;stroke:var(--ink);stroke-width:1.2;opacity:.45;stroke-linecap:round}
+.doodle .ln{fill:none;stroke:var(--ink);stroke-width:2.4;stroke-linecap:round}
+.doodle .arw{fill:none;stroke:var(--ink-2);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.doodle .spark{fill:none;stroke:var(--green);stroke-width:2.4;stroke-linecap:round;animation:twinkle 7s infinite}
+.lamp{stroke:#0e1414;stroke-width:3;transition:fill .4s}
+.l-red{fill:#4a2a2b;animation:lr 7s infinite}
+.l-amber{fill:#4a3b1f;animation:la 7s infinite}
+.l-green{fill:#1f4030;animation:lg 7s infinite}
+@keyframes lr{0%,27%{fill:#ef4444;filter:drop-shadow(0 0 14px #ef4444)}31%,100%{fill:#4a2a2b;filter:none}}
+@keyframes la{0%,28%{fill:#4a3b1f;filter:none}32%,58%{fill:#f5a524;filter:drop-shadow(0 0 14px #f5a524)}62%,100%{fill:#4a3b1f;filter:none}}
+@keyframes lg{0%,59%{fill:#1f4030;filter:none}63%,100%{fill:#30c47a;filter:drop-shadow(0 0 16px #30c47a)}}
+@keyframes twinkle{0%,60%{opacity:0}66%,100%{opacity:1}}
+.note{position:absolute;width:28%;font-family:"Caveat",cursive;font-size:5.4cqw;line-height:1.05;color:var(--ink-2);opacity:.45}
+.note b{display:block;font-size:6.6cqw;font-weight:700}
+.n-red,.n-green{text-align:right}
+.n-red b{color:var(--red)}.n-amber b{color:var(--amber)}.n-green b{color:var(--green)}
+.n-red{animation:nr 7s infinite}.n-amber{animation:na 7s infinite}.n-green{animation:ng 7s infinite}
+@keyframes nr{0%,27%{opacity:1}31%,100%{opacity:.45}}
+@keyframes na{0%,28%{opacity:.45}32%,58%{opacity:1}62%,100%{opacity:.45}}
+@keyframes ng{0%,59%{opacity:.45}63%,100%{opacity:1}}
+.note.n-foot{width:auto;opacity:.8;font-size:4.8cqw;color:var(--ink-3)}
+@media (max-width:900px){.doodle{max-width:360px}.board-pane{display:none}.hero-visual.board-on .board-pane{display:block}.hero-visual.board-on .ring-pane{display:none}}
+@media (prefers-reduced-motion:reduce){.lamp,.note,.doodle .spark{animation:none}.l-green{fill:#30c47a}.note{opacity:1}}
 .ask{margin-top:26px}
 .ask-q{font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--brand);font-weight:600;margin:0 0 10px}
 .probs{display:grid;grid-template-columns:1fr 1fr;gap:10px}
@@ -522,25 +526,24 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
 
     <div class="hero-visual" id="heroVisual">
       <div class="ring-pane">
-        <div class="ring" role="img" aria-label="Career arc from data operations in 2014 to data and AI products now">
-          <svg viewBox="0 0 420 420" aria-hidden="true">
-            <defs>
-              <linearGradient id="arcGrad" gradientUnits="userSpaceOnUse" x1="127" y1="353" x2="316" y2="84"><stop offset="0" class="s-red"/><stop offset=".5" class="s-amber"/><stop offset="1" class="s-green"/></linearGradient>
-              <linearGradient id="dcGrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0" class="s-brand"/><stop offset="1" class="s-green"/></linearGradient>
-            </defs>
-            <circle class="track" cx="210" cy="210" r="165"/>
-            <circle class="core" cx="210" cy="210" r="118"/>
-            <text class="initials" x="210" y="222" text-anchor="middle">DC</text>
-            <text class="core-sub" x="210" y="256" text-anchor="middle">Data · Product · AI</text>
-            <path class="arc" pathLength="1" d="M127.5,352.9 A165,165 0 1 1 316.1,83.6"/>
-            <path class="dots" pathLength="1" d="M127.5,352.9 A165,165 0 1 1 316.1,83.6"/>
-            <polygon class="arrow" points="325.3,91.3 307.2,87.9 318.8,74.1"/>
+        <div class="doodle" role="img" aria-label="Doodle of a traffic light: red for messy data in 2014, amber for data governance in 2020, green for data and AI products now">
+          <svg viewBox="0 0 440 440" aria-hidden="true">
+            <path class="house" d="M165,52 C190,44 225,44 247,52 C256,60 255,190 254,318 C252,330 238,334 205,334 C172,334 158,330 156,318 C155,200 154,64 165,52 Z"/>
+            <path class="sk" d="M168,48 C195,41 228,43 250,56 C258,120 257,250 252,322 C236,338 180,337 160,325 C152,250 153,120 158,58 Z"/>
+            <path class="sk" d="M172,90 C182,64 228,64 238,90 M172,180 C182,154 228,154 238,180 M172,270 C182,244 228,244 238,270"/>
+            <path class="ln" d="M202,334 C204,370 201,398 203,424 M210,334 C211,366 209,400 212,424 M150,426 C185,418 230,420 268,428"/>
+            <circle class="lamp l-red" cx="205" cy="102" r="30"/>
+            <circle class="lamp l-amber" cx="205" cy="192" r="30"/>
+            <circle class="lamp l-green" cx="205" cy="282" r="30"/>
+            <path class="arw" d="M120,80 C142,72 158,84 166,97 M157,94 L167,98 L166,87"/>
+            <path class="arw" d="M320,170 C294,162 262,172 247,187 M257,187 L246,189 L250,178"/>
+            <path class="arw" d="M118,302 C140,312 156,300 167,288 M157,290 L168,287 L164,298"/>
+            <path class="spark" d="M276,256 v18 M267,265 h18 M302,296 v10 M297,301 h10"/>
           </svg>
-          <span class="ms" style="left:25.8%;top:81%;animation-delay:.5s"><small>2014</small><b>Data operations</b></span>
-          <span class="ms" style="left:10.8%;top:52.7%;animation-delay:.9s"><small>2020</small><b>Data governance</b></span>
-          <span class="ms" style="left:19.9%;top:24.7%;animation-delay:1.3s"><small>2023</small><b>Service &amp; delivery</b></span>
-          <span class="ms" style="left:44.5%;top:11.1%;animation-delay:1.7s"><small>2024</small><b>Product Owner</b></span>
-          <span class="ms now" style="left:82.8%;top:17.2%;animation-delay:2.3s"><small>Now</small><b>Data &amp; AI products</b></span>
+          <span class="note n-red" style="left:1%;top:8%"><b>2014</b>data ops,<br>messy master data</span>
+          <span class="note n-amber" style="right:1%;top:31%"><b>2020</b>governance:<br>owners &amp; rules</span>
+          <span class="note n-green" style="left:1%;top:61%"><b>now</b>data &amp; AI<br>products people trust</span>
+          <span class="note n-foot" style="right:0;top:76%;width:30%">12 years,<br>one direction ↗</span>
         </div>
       </div>
       <div class="board-pane">
