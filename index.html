@@ -1,0 +1,723 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dawid Ciesielski · Product Owner, Data & AI</title>
+<meta name="description" content="Dawid Ciesielski — Product Owner for data & AI products in Düsseldorf. I keep data products on track and bring them back to green, with AI in the loop and humans accountable.">
+<meta property="og:title" content="Dawid Ciesielski · Product Owner, Data & AI">
+<meta property="og:description" content="AI can write the user story. Someone still has to own the outcome. Product Owner for governed data & AI products.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230f3d3e'/%3E%3Ccircle cx='10' cy='16' r='3' fill='%23e5484d'/%3E%3Ccircle cx='16' cy='16' r='3' fill='%23f5a524'/%3E%3Ccircle cx='22' cy='16' r='3' fill='%2330a46c'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,650&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f7f5f0; --surface:#ffffff; --surface-2:#efece4; --ink:#16201f; --ink-2:#4a5654; --ink-3:#7a8583;
+  --line:#dcd7cc; --brand:#0f5b5c; --brand-ink:#ffffff; --brand-soft:#dcebe9;
+  --red:#d83b3f; --amber:#d98a0b; --green:#23945c;
+  --red-soft:#fbe4e4; --amber-soft:#fcefd6; --green-soft:#dcf2e5;
+  --shadow:0 1px 2px rgba(20,30,30,.06),0 8px 24px rgba(20,30,30,.06);
+  --radius:16px; --max:1120px;
+  --serif:"Fraunces",Georgia,serif; --sans:"Inter",system-ui,-apple-system,Segoe UI,sans-serif; --mono:"JetBrains Mono",ui-monospace,monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0e1514; --surface:#151f1e; --surface-2:#1c2827; --ink:#ecf1ef; --ink-2:#b3c0bd; --ink-3:#83918e;
+    --line:#2a3836; --brand:#4fb8b3; --brand-ink:#08201f; --brand-soft:#16312f;
+    --red:#f06a6d; --amber:#f2b441; --green:#4cc587;
+    --red-soft:#3a1c1d; --amber-soft:#3a2d12; --green-soft:#133224;
+    --shadow:0 1px 2px rgba(0,0,0,.3),0 8px 24px rgba(0,0,0,.25);
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0e1514; --surface:#151f1e; --surface-2:#1c2827; --ink:#ecf1ef; --ink-2:#b3c0bd; --ink-3:#83918e;
+  --line:#2a3836; --brand:#4fb8b3; --brand-ink:#08201f; --brand-soft:#16312f;
+  --red:#f06a6d; --amber:#f2b441; --green:#4cc587;
+  --red-soft:#3a1c1d; --amber-soft:#3a2d12; --green-soft:#133224;
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 8px 24px rgba(0,0,0,.25);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:72px}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:var(--brand)}
+img{max-width:100%}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 20px}
+h1,h2,h3{font-family:var(--serif);font-weight:650;letter-spacing:-.015em;line-height:1.12;margin:0}
+h2{font-size:clamp(28px,4vw,42px)}
+h3{font-size:20px}
+p{margin:0 0 12px}
+.kicker{font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--brand);font-weight:600}
+.lede{color:var(--ink-2);font-size:18px;max-width:680px}
+section{padding:88px 0}
+.sec-head{display:grid;gap:12px;margin-bottom:40px}
+.muted{color:var(--ink-2)}
+.small{font-size:14px}
+.chip{display:inline-flex;align-items:center;gap:6px;padding:4px 10px;border-radius:999px;background:var(--surface-2);color:var(--ink-2);font-size:13px;font-weight:500;border:1px solid var(--line)}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 18px;border-radius:12px;font-weight:600;font-size:15px;text-decoration:none;border:1px solid transparent;cursor:pointer;font-family:var(--sans);transition:transform .15s ease, background .15s}
+.btn:hover{transform:translateY(-1px)}
+.btn-primary{background:var(--brand);color:var(--brand-ink)}
+.btn-ghost{background:transparent;color:var(--ink);border-color:var(--line)}
+.btn-ghost:hover{background:var(--surface-2)}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow)}
+.dot{width:10px;height:10px;border-radius:50%;display:inline-block;flex:none}
+.dot.r{background:var(--red)}.dot.a{background:var(--amber)}.dot.g{background:var(--green)}
+
+/* nav */
+header.nav{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--bg) 86%,transparent);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:60px;gap:16px}
+.logo{display:flex;align-items:center;gap:10px;font-weight:700;text-decoration:none;color:var(--ink);font-size:15px}
+.logo .lights{display:flex;gap:3px;padding:6px 7px;background:var(--ink);border-radius:8px}
+.logo .lights i{width:7px;height:7px;border-radius:50%;display:block}
+.nav-links{display:flex;gap:4px;align-items:center}
+.nav-links a{color:var(--ink-2);text-decoration:none;font-size:14px;font-weight:500;padding:8px 10px;border-radius:8px}
+.nav-links a:hover{color:var(--ink);background:var(--surface-2)}
+.theme-btn{background:var(--surface);border:1px solid var(--line);color:var(--ink);border-radius:10px;width:38px;height:38px;cursor:pointer;display:grid;place-items:center;font-size:16px}
+@media (max-width:860px){.nav-links a:not(.keep){display:none}}
+
+/* hero */
+.hero{padding:72px 0 56px}
+.hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:48px;align-items:center}
+.hero h1{font-size:clamp(38px,6vw,68px);margin:16px 0 20px}
+.hero h1 em{font-style:italic;color:var(--brand)}
+.hero .actions{display:flex;flex-wrap:wrap;gap:10px;margin:28px 0 20px}
+.hero-meta{display:flex;flex-wrap:wrap;gap:8px}
+@media (max-width:900px){.hero-grid{grid-template-columns:1fr}}
+
+/* status board */
+.board{padding:22px}
+.board-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;gap:10px}
+.board-title{font-family:var(--mono);font-size:12px;color:var(--ink-3);text-transform:uppercase;letter-spacing:.1em}
+.status-pill{display:inline-flex;align-items:center;gap:8px;padding:6px 12px;border-radius:999px;font-weight:700;font-size:13px;transition:background .4s,color .4s}
+.status-pill.r{background:var(--red-soft);color:var(--red)}
+.status-pill.a{background:var(--amber-soft);color:var(--amber)}
+.status-pill.g{background:var(--green-soft);color:var(--green)}
+.board h3{font-size:22px;margin-bottom:4px}
+.steps{list-style:none;padding:0;margin:18px 0 0;display:grid;gap:10px}
+.steps li{display:flex;gap:12px;align-items:flex-start;padding:10px 12px;border-radius:12px;background:var(--surface-2);opacity:.45;transition:opacity .4s, transform .4s}
+.steps li.on{opacity:1;transform:translateX(2px)}
+.steps li .tick{width:22px;height:22px;border-radius:50%;border:2px solid var(--line);display:grid;place-items:center;font-size:12px;flex:none;margin-top:1px;color:transparent;transition:all .3s}
+.steps li.on .tick{background:var(--green);border-color:var(--green);color:#fff}
+.steps li b{display:block;font-size:14px}
+.steps li span{font-size:13px;color:var(--ink-2)}
+.board-foot{display:flex;justify-content:space-between;align-items:center;margin-top:16px;font-size:13px;color:var(--ink-3)}
+.replay{background:none;border:none;color:var(--brand);font-weight:600;cursor:pointer;font-size:13px;font-family:var(--sans)}
+
+/* proof strip */
+.proof{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--surface)}
+.proof .wrap{display:grid;grid-template-columns:repeat(4,1fr)}
+.proof .stat{padding:26px 20px;border-right:1px solid var(--line)}
+.proof .stat:last-child{border-right:none}
+.proof .num{font-family:var(--serif);font-size:34px;font-weight:650;line-height:1}
+.proof .lbl{font-size:13px;color:var(--ink-2);margin-top:8px}
+@media (max-width:760px){.proof .wrap{grid-template-columns:1fr 1fr}.proof .stat:nth-child(2){border-right:none}.proof .stat:nth-child(-n+2){border-bottom:1px solid var(--line)}}
+
+/* manifesto flip cards */
+.thesis{font-family:var(--serif);font-size:clamp(24px,3.2vw,34px);line-height:1.25;max-width:860px;margin:0 0 36px}
+.thesis mark{background:linear-gradient(transparent 60%,var(--amber-soft) 60%);color:inherit;padding:0 2px}
+.flip-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+@media (max-width:900px){.flip-grid{grid-template-columns:1fr 1fr}}
+@media (max-width:600px){.flip-grid{grid-template-columns:1fr}}
+.flip{perspective:1200px;height:230px;cursor:pointer;background:none;border:none;padding:0;text-align:left;font:inherit;color:inherit}
+.flip-inner{position:relative;width:100%;height:100%;transition:transform .6s cubic-bezier(.2,.8,.2,1);transform-style:preserve-3d}
+.flip.flipped .flip-inner{transform:rotateY(180deg)}
+.face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:var(--radius);padding:22px;display:flex;flex-direction:column;border:1px solid var(--line);box-shadow:var(--shadow)}
+.face.front{background:var(--surface)}
+.face.back{background:var(--brand);color:var(--brand-ink);transform:rotateY(180deg);border-color:transparent}
+.face .tag{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;opacity:.75;margin-bottom:10px}
+.face h3{font-size:20px;margin-bottom:10px}
+.face p{font-size:14.5px;margin:0}
+.face .hint{margin-top:auto;font-size:12px;opacity:.6;font-family:var(--mono)}
+
+/* timeline */
+.journey{display:grid;grid-template-columns:repeat(6,1fr);gap:0;position:relative;margin-top:8px}
+.journey::before{content:"";position:absolute;left:0;right:0;top:19px;height:3px;background:linear-gradient(90deg,var(--ink-3),var(--brand),var(--green));border-radius:3px;opacity:.5}
+.chapter{position:relative;padding:0 12px 0 0}
+.chapter .node{width:40px;height:40px;border-radius:50%;background:var(--surface);border:3px solid var(--brand);display:grid;place-items:center;font-family:var(--mono);font-size:12px;font-weight:600;position:relative;z-index:1;margin-bottom:14px}
+.chapter.next .node{border-style:dashed;border-color:var(--green)}
+.chapter .yrs{font-family:var(--mono);font-size:12px;color:var(--ink-3)}
+.chapter h3{font-size:17px;margin:4px 0 6px}
+.chapter p{font-size:14px;color:var(--ink-2)}
+.chapter .learned{font-size:13px;border-left:3px solid var(--amber);padding-left:8px;color:var(--ink);margin-top:8px}
+@media (max-width:900px){
+  .journey{grid-template-columns:1fr;gap:22px;padding-left:4px}
+  .journey::before{left:23px;right:auto;top:0;bottom:0;width:3px;height:auto;background:linear-gradient(180deg,var(--ink-3),var(--brand),var(--green))}
+  .chapter{display:grid;grid-template-columns:48px 1fr;gap:12px;padding:0}
+  .chapter .node{margin:0}
+}
+
+/* case studies */
+.cases{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+@media (max-width:800px){.cases{grid-template-columns:1fr}}
+.case{padding:26px;display:flex;flex-direction:column;gap:14px}
+.case-top{display:flex;justify-content:space-between;gap:10px;align-items:center;flex-wrap:wrap}
+.case h3{font-size:22px}
+.case dl{margin:0;display:grid;gap:10px}
+.case dt{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3)}
+.case dd{margin:2px 0 0;font-size:15px;color:var(--ink-2)}
+.case .ai-angle{background:var(--brand-soft);border-radius:12px;padding:12px 14px;font-size:14px}
+.case .ai-angle b{color:var(--brand)}
+.rag-track{display:flex;align-items:center;gap:6px;font-family:var(--mono);font-size:12px;color:var(--ink-3)}
+
+/* demo */
+.demo{display:grid;grid-template-columns:.9fr 1.1fr;gap:18px;align-items:start}
+@media (max-width:900px){.demo{grid-template-columns:1fr}}
+.panel{padding:22px}
+label.lbl{display:block;font-size:13px;font-weight:600;margin-bottom:6px;color:var(--ink-2)}
+textarea,select,input[type=text]{width:100%;font:inherit;font-size:15px;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:12px 14px;resize:vertical}
+textarea:focus,select:focus{outline:2px solid var(--brand);outline-offset:1px}
+.examples{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0 16px}
+.examples button{font:inherit;font-size:12.5px;background:var(--surface-2);border:1px solid var(--line);color:var(--ink-2);padding:5px 10px;border-radius:999px;cursor:pointer}
+.examples button:hover{color:var(--ink);border-color:var(--brand)}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px}
+.out{min-height:420px}
+.out-empty{display:grid;place-items:center;text-align:center;height:100%;min-height:380px;color:var(--ink-3);padding:20px}
+.out h4{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);margin:18px 0 8px;font-weight:600}
+.out h4:first-child{margin-top:0}
+.story{font-family:var(--serif);font-size:20px;line-height:1.35}
+.story b{color:var(--brand)}
+.ac{list-style:none;padding:0;margin:0;display:grid;gap:8px}
+.ac li{background:var(--surface-2);border-radius:10px;padding:10px 12px;font-size:14px;font-family:var(--mono);line-height:1.5}
+.ac li .k{color:var(--brand);font-weight:600}
+.checks{list-style:none;padding:0;margin:0;display:grid;gap:6px;font-size:14px}
+.checks li::before{content:"☐ ";color:var(--brand)}
+.qs{margin:0;padding-left:18px;font-size:14px;color:var(--ink-2)}
+.invest{display:flex;gap:6px;flex-wrap:wrap}
+.invest span{font-family:var(--mono);font-size:12px;padding:4px 8px;border-radius:8px;font-weight:600}
+.invest .ok{background:var(--green-soft);color:var(--green)}
+.invest .warn{background:var(--amber-soft);color:var(--amber)}
+.honest{font-size:12.5px;color:var(--ink-3);margin-top:14px;border-top:1px dashed var(--line);padding-top:10px}
+
+/* health check */
+.hc{display:grid;grid-template-columns:1.1fr .9fr;gap:18px;align-items:start}
+@media (max-width:900px){.hc{grid-template-columns:1fr}}
+.q{padding:16px 0;border-bottom:1px solid var(--line)}
+.q:last-child{border-bottom:none}
+.q p{font-weight:600;margin-bottom:10px;font-size:15px}
+.seg{display:inline-flex;background:var(--surface-2);border-radius:10px;padding:3px;gap:3px;flex-wrap:wrap}
+.seg button{font:inherit;font-size:13px;border:none;background:transparent;color:var(--ink-2);padding:6px 12px;border-radius:8px;cursor:pointer;font-weight:500}
+.seg button.sel[data-v="2"]{background:var(--green);color:#fff}
+.seg button.sel[data-v="1"]{background:var(--amber);color:#fff}
+.seg button.sel[data-v="0"]{background:var(--red);color:#fff}
+.verdict{position:sticky;top:80px;padding:24px}
+.big-light{display:flex;gap:10px;padding:12px;background:var(--ink);border-radius:14px;width:max-content;margin-bottom:16px}
+.big-light i{width:26px;height:26px;border-radius:50%;background:#3a4443;transition:all .35s}
+.big-light i.on.r{background:#e5484d;box-shadow:0 0 18px #e5484d}
+.big-light i.on.a{background:#f5a524;box-shadow:0 0 18px #f5a524}
+.big-light i.on.g{background:#30a46c;box-shadow:0 0 18px #30a46c}
+.verdict ol{padding-left:18px;margin:8px 0 0;font-size:14.5px;color:var(--ink-2)}
+.verdict ol li{margin-bottom:6px}
+
+/* 90 days */
+.plan{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+@media (max-width:800px){.plan{grid-template-columns:1fr}}
+.plan .card{padding:24px}
+.plan .d{font-family:var(--serif);font-size:44px;font-weight:650;color:var(--brand);line-height:1}
+.plan ul{padding-left:18px;margin:12px 0 0;color:var(--ink-2);font-size:14.5px}
+.plan li{margin-bottom:6px}
+
+/* skills */
+.skills{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+@media (max-width:900px){.skills{grid-template-columns:1fr 1fr}}
+@media (max-width:520px){.skills{grid-template-columns:1fr}}
+.skills .card{padding:20px}
+.skills h3{font-size:17px;margin-bottom:12px}
+.skills .chips{display:flex;flex-wrap:wrap;gap:6px}
+
+/* experience */
+.xp{display:grid;gap:0}
+.xp-item{display:grid;grid-template-columns:200px 1fr;gap:24px;padding:22px 0;border-top:1px solid var(--line)}
+.xp-item:last-child{border-bottom:1px solid var(--line)}
+.xp-when{font-family:var(--mono);font-size:13px;color:var(--ink-3)}
+.xp-item h3{font-size:19px}
+.xp-item .org{color:var(--brand);font-weight:600;font-size:14px;margin:2px 0 8px}
+.xp-item ul{margin:0;padding-left:18px;color:var(--ink-2);font-size:14.5px}
+.xp-item li{margin-bottom:4px}
+details.more{margin-top:10px}
+details.more summary{cursor:pointer;color:var(--brand);font-weight:600;font-size:14px}
+@media (max-width:700px){.xp-item{grid-template-columns:1fr;gap:6px}}
+
+/* recruiter */
+.fast{display:grid;grid-template-columns:1.2fr .8fr;gap:18px}
+@media (max-width:860px){.fast{grid-template-columns:1fr}}
+.fast .card{padding:26px}
+.pitch{font-family:var(--serif);font-size:19px;line-height:1.45;background:var(--surface-2);border-radius:12px;padding:18px;margin:12px 0}
+.fit{list-style:none;padding:0;margin:10px 0 0;display:grid;gap:10px}
+.fit li{display:flex;gap:10px;align-items:flex-start;font-size:15px}
+.fit li .dot{margin-top:8px}
+
+/* contact */
+.contact{background:var(--ink);color:var(--bg);border-radius:24px;padding:48px;display:grid;grid-template-columns:1.3fr .7fr;gap:30px;align-items:center}
+.contact h2{color:var(--bg)}
+.contact p{color:color-mix(in srgb,var(--bg) 75%,transparent)}
+.contact .links{display:grid;gap:10px}
+.contact .links a{display:flex;justify-content:space-between;align-items:center;padding:14px 16px;border-radius:12px;background:color-mix(in srgb,var(--bg) 10%,transparent);color:var(--bg);text-decoration:none;font-weight:600}
+.contact .links a:hover{background:color-mix(in srgb,var(--bg) 18%,transparent)}
+@media (max-width:760px){.contact{grid-template-columns:1fr;padding:30px 22px}}
+footer{padding:36px 0 50px;color:var(--ink-3);font-size:13px}
+footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+
+.reveal{opacity:0;transform:translateY(14px);transition:opacity .6s ease,transform .6s ease}
+.reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}.reveal{opacity:1;transform:none}}
+.toast{position:fixed;bottom:22px;left:50%;transform:translateX(-50%) translateY(20px);background:var(--ink);color:var(--bg);padding:10px 16px;border-radius:10px;font-size:14px;opacity:0;transition:all .3s;z-index:99;pointer-events:none}
+.toast.show{opacity:1;transform:translateX(-50%)}
+@media print{header.nav,.demo,.hc,#health,#refiner,.theme-btn,.flip-grid,footer,.actions{display:none!important}section{padding:24px 0}.reveal{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="logo" href="#top" aria-label="Dawid Ciesielski, home">
+      <span class="lights"><i style="background:#e5484d"></i><i style="background:#f5a524"></i><i style="background:#30a46c"></i></span>
+      Dawid Ciesielski
+    </a>
+    <nav class="nav-links" aria-label="Main">
+      <a href="#ai-po">AI × PO</a>
+      <a href="#cases">Case studies</a>
+      <a href="#refiner">Story Refiner</a>
+      <a href="#health">Health check</a>
+      <a href="#experience">Experience</a>
+      <a href="#fast-lane" class="keep">Recruiters</a>
+      <button class="theme-btn" id="themeBtn" aria-label="Toggle colour theme">◐</button>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="kicker">Product Owner · Data &amp; AI · Düsseldorf</span>
+      <h1>I keep data products on track, and bring them <em>back to green.</em></h1>
+      <p class="lede">12 years in data, from SAP master data to steering committees. Today I own a governed Azure data model at ALDI SÜD that powers harmonized financial reporting and <strong>AI‑driven Conversational Analytics</strong>. AI can write the user story. Someone still has to own the outcome. That's my job.</p>
+      <div class="actions">
+        <a class="btn btn-primary" href="#refiner">Try my Story Refiner →</a>
+        <a class="btn btn-ghost" href="#fast-lane">Recruiter fast lane</a>
+      </div>
+      <div class="hero-meta">
+        <span class="chip">Scrum · Backlog · Roadmaps</span>
+        <span class="chip">Azure · Databricks · Tableau</span>
+        <span class="chip">Data Governance · Collibra</span>
+        <span class="chip">Steering &amp; Risk</span>
+      </div>
+    </div>
+
+    <div class="card board" aria-live="polite">
+      <div class="board-top">
+        <span class="board-title">Initiative status</span>
+        <span class="status-pill r" id="pill"><span class="dot r" id="pillDot"></span><span id="pillTxt">RED</span></span>
+      </div>
+      <h3>Global KPI harmonization</h3>
+      <p class="muted small" style="margin:0">Hybrid internal + external team · Azure / Databricks / Tableau</p>
+      <ol class="steps" id="steps">
+        <li><span class="tick">✓</span><div><b>Re-cut the team</b><span>Stream Leads with clear, individual ownership</span></div></li>
+        <li><span class="tick">✓</span><div><b>Re-scope with stakeholders</b><span>Agreed scope &amp; delivery scenarios</span></div></li>
+        <li><span class="tick">✓</span><div><b>Back‑to‑Yellow / Back‑to‑Green plan</b><span>Concrete mitigation measures, owned &amp; tracked</span></div></li>
+        <li><span class="tick">✓</span><div><b>Direct line to Management</b><span>Regular steering, transparent decisions</span></div></li>
+      </ol>
+      <div class="board-foot"><span>A real story from my 2025–26 role</span><button class="replay" id="replay">↻ Replay</button></div>
+    </div>
+  </div>
+</section>
+
+<!-- PROOF STRIP -->
+<div class="proof">
+  <div class="wrap">
+    <div class="stat"><div class="num" data-count="12">12</div><div class="lbl">years in data &amp; business operations</div></div>
+    <div class="stat"><div class="num" data-count="5">5+</div><div class="lbl">years at ALDI SÜD, consultant → Product Owner</div></div>
+    <div class="stat"><div class="num">5</div><div class="lbl">industries: retail, pharma, food, FMCG, chemicals</div></div>
+    <div class="stat"><div class="num">1</div><div class="lbl">rule: the PO owns the outcome, not the tool</div></div>
+  </div>
+</div>
+
+<!-- AI x PO -->
+<section id="ai-po">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="kicker">The Product Owner in an AI world</span>
+      <h2>AI changes the craft. It doesn't change who's accountable.</h2>
+    </div>
+    <p class="thesis reveal">Every PO will soon have an assistant that drafts stories, summarises steering decks and flags risks. The ones who stand out will be those who know <mark>which data can be trusted</mark>, <mark>which trade‑off is worth making</mark>, and <mark>how to bring people along</mark>. That's where I've spent my career.</p>
+    <div class="flip-grid">
+      <button class="flip reveal" aria-label="Backlog refinement, tap to see what I still own"><div class="flip-inner">
+        <div class="face front"><span class="tag">AI now does</span><h3>Backlog refinement</h3><p>Drafts user stories, splits epics, proposes Given/When/Then acceptance criteria in seconds.</p><span class="hint">tap → what I still own</span></div>
+        <div class="face back"><span class="tag">I still own</span><h3>What's worth building</h3><p>Priority by user value, timing and dependencies, and a backlog that stakeholders and team both understand.</p></div>
+      </div></button>
+      <button class="flip reveal" aria-label="Reporting and analytics"><div class="flip-inner">
+        <div class="face front"><span class="tag">AI now does</span><h3>Answers in plain language</h3><p>Conversational Analytics lets anyone ask “why did margin drop in region X?” and get an answer.</p><span class="hint">tap → what I still own</span></div>
+        <div class="face back"><span class="tag">I still own</span><h3>The data it answers from</h3><p>A unified, governed data model and harmonized KPI definitions. Without that, a chatbot just gives wrong answers with confidence.</p></div>
+      </div></button>
+      <button class="flip reveal" aria-label="Risk and steering"><div class="flip-inner">
+        <div class="face front"><span class="tag">AI now does</span><h3>Status reports</h3><p>Summarises Jira, meeting notes and burndowns into a tidy RAG slide.</p><span class="hint">tap → what I still own</span></div>
+        <div class="face back"><span class="tag">I still own</span><h3>The honest conversation</h3><p>Saying “we're red” in a steering committee, with a Back‑to‑Green plan and named owners.</p></div>
+      </div></button>
+      <button class="flip reveal" aria-label="Data quality"><div class="flip-inner">
+        <div class="face front"><span class="tag">AI now does</span><h3>Anomaly detection</h3><p>Spots outliers and inconsistencies across millions of records.</p><span class="hint">tap → what I still own</span></div>
+        <div class="face back"><span class="tag">I still own</span><h3>Rules, ownership, fixes</h3><p>Business &amp; data quality rules, clear data ownership, and a reconciliation product that stops store‑level incidents.</p></div>
+      </div></button>
+      <button class="flip reveal" aria-label="Sprint reviews"><div class="flip-inner">
+        <div class="face front"><span class="tag">AI now does</span><h3>Demo prep</h3><p>Generates release notes and review agendas from merged work.</p><span class="hint">tap → what I still own</span></div>
+        <div class="face back"><span class="tag">I still own</span><h3>Trust with end users</h3><p>Sprint Reviews where business users see real progress against the Acceptance Criteria and Definition of Done we agreed together.</p></div>
+      </div></button>
+      <button class="flip reveal" aria-label="Enablement"><div class="flip-inner">
+        <div class="face front"><span class="tag">AI now does</span><h3>Documentation</h3><p>Writes how‑to guides and FAQs on demand.</p><span class="hint">tap → what I still own</span></div>
+        <div class="face back"><span class="tag">I still own</span><h3>Adoption</h3><p>I'm a trained language teacher. I've run Data Literacy series and trainings that get people to actually use the new tool.</p></div>
+      </div></button>
+    </div>
+  </div>
+</section>
+
+<!-- JOURNEY -->
+<section id="journey" style="background:var(--surface);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="kicker">The journey</span>
+      <h2>From the hotel front desk to the steering committee</h2>
+      <p class="lede">An unusual path, and every stop taught me something a Product Owner needs.</p>
+    </div>
+    <div class="journey">
+      <div class="chapter reveal"><div class="node">01</div><div><span class="yrs">2012–2014</span><h3>Hospitality</h3><p>Shift lead, events, sales offers.</p><div class="learned">Serve the customer under pressure.</div></div></div>
+      <div class="chapter reveal"><div class="node">02</div><div><span class="yrs">2014–2020</span><h3>Data operations</h3><p>Infosys (P&amp;G), Barry Callebaut, Flint Group. SAP master data, migrations, a pre‑study in South Africa.</p><div class="learned">Bad data breaks real operations.</div></div></div>
+      <div class="chapter reveal"><div class="node">03</div><div><span class="yrs">2020–2023</span><h3>Data governance</h3><p>Takeda &amp; ALDI SÜD. Collibra, SAP MDG, operating models, data ownership.</p><div class="learned">Trust is designed, not assumed.</div></div></div>
+      <div class="chapter reveal"><div class="node">04</div><div><span class="yrs">2023–2024</span><h3>Service &amp; delivery</h3><p>IT Service Owner &amp; Coordination Lead. KPIs, vendors, contracts, SoWs.</p><div class="learned">Delivery is a system you run.</div></div></div>
+      <div class="chapter reveal"><div class="node">05</div><div><span class="yrs">2024–now</span><h3>Product Owner</h3><p>Data Quality → KPI Reporting → Financial Reporting with Conversational Analytics.</p><div class="learned">Own the outcome, end to end.</div></div></div>
+      <div class="chapter next reveal"><div class="node">→</div><div><span class="yrs">next</span><h3>Data &amp; AI products</h3><p>Leading products where governed data meets GenAI, in a team that wants both.</p><div class="learned">Could it be yours? <a href="#contact">Let's talk.</a></div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CASE STUDIES -->
+<section id="cases">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="kicker">Case studies</span>
+      <h2>Four products, four problems, one pattern</h2>
+      <p class="lede">Get the data right, get the people aligned, make progress visible. Each one is a foundation AI needs to be useful.</p>
+    </div>
+    <div class="cases">
+      <article class="card case reveal">
+        <div class="case-top"><span class="kicker">ALDI SÜD · 2026 → now</span><span class="chip">Azure Data Platform</span></div>
+        <h3>A governed financial data model for AI-driven insights</h3>
+        <dl>
+          <div><dt>Challenge</dt><dd>Financial reporting and KPIs spread across landscapes. Ad‑hoc questions took days.</dd></div>
+          <div><dt>What I do</dt><dd>Steer the team delivering a unified, scalable data model. Align iteration scope with stakeholders, run Sprint Reviews for business users, represent the team in Strategic &amp; Investment Steering.</dd></div>
+        </dl>
+        <div class="ai-angle"><b>AI angle:</b> this model is the ground truth behind Conversational Analytics. The LLM is only as good as the data model under it.</div>
+      </article>
+      <article class="card case reveal">
+        <div class="case-top"><span class="kicker">ALDI SÜD · 2025–2026</span><span class="rag-track"><span class="dot r"></span>→<span class="dot a"></span>→<span class="dot g"></span></span></div>
+        <h3>Global KPI harmonization: back to green</h3>
+        <dl>
+          <div><dt>Challenge</dt><dd>A hybrid internal/external team on a global initiative, running behind, with unclear ownership.</dd></div>
+          <div><dt>What I did</dt><dd>Introduced a Stream Lead structure with individual ownership, re‑defined scope and delivery scenarios, built the delivery roadmap, and drove Back‑to‑Yellow and Back‑to‑Green measures. <strong>The initiative's status improved.</strong></dd></div>
+        </dl>
+        <div class="ai-angle"><b>AI angle:</b> harmonized KPI definitions are what make an AI's “revenue” mean the same thing in every country.</div>
+      </article>
+      <article class="card case reveal">
+        <div class="case-top"><span class="kicker">ALDI SÜD · 2024–2025</span><span class="chip">Data Quality</span></div>
+        <h3>Data Quality Reconciliation Solution</h3>
+        <dl>
+          <div><dt>Challenge</dt><dd>Data inconsistencies were causing critical incidents in store operations.</dd></div>
+          <div><dt>What I did</dt><dd>Owned the product across its full lifecycle: roadmap, release plan, backlog, Sprint Goals, DoD, testing approach and risk management. Drove adoption with documentation and training.</dd></div>
+        </dl>
+        <div class="ai-angle"><b>AI angle:</b> catching bad data proactively is exactly what keeps AI models and automations from going wrong at scale.</div>
+      </article>
+      <article class="card case reveal">
+        <div class="case-top"><span class="kicker">Takeda · 2020–2021</span><span class="chip">Collibra · SAP MDG</span></div>
+        <h3>Data governance from zero to operating model</h3>
+        <dl>
+          <div><dt>Challenge</dt><dd>No single source of truth for Vendor, Customer and Finance master data rules.</dd></div>
+          <div><dt>What I did</dt><dd>Implemented Collibra, defined business and data quality rules, operationalized Data Ownership, designed the governance operating model, and launched a Data Literacy training series.</dd></div>
+        </dl>
+        <div class="ai-angle"><b>AI angle:</b> governance, lineage and ownership are exactly what AI regulation and responsible‑AI reviews ask for.</div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- STORY REFINER DEMO -->
+<section id="refiner" style="background:var(--surface);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="kicker">Interactive · How I refine</span>
+      <h2>Story Refiner: from stakeholder wish to sprint‑ready</h2>
+      <p class="lede">Type a request the way a stakeholder would say it. See how I'd turn it into a user story, acceptance criteria, a Definition of Done and the questions I'd ask before committing.</p>
+    </div>
+    <div class="demo">
+      <div class="card panel">
+        <label class="lbl" for="req">Stakeholder request</label>
+        <textarea id="req" rows="4" placeholder="e.g. Finance needs to see margin by region every morning, and ideally just ask the data questions in plain English"></textarea>
+        <div class="examples" aria-label="Example requests">
+          <button data-ex="Finance needs to see margin by region every morning and wants to ask questions in plain English">Conversational KPI</button>
+          <button data-ex="Stores keep getting wrong prices because master data is inconsistent, we need to catch it before it hits the shelf">Data quality</button>
+          <button data-ex="Management wants one dashboard with harmonized KPIs for all countries in Tableau">KPI dashboard</button>
+          <button data-ex="Can we use AI to summarise supplier contracts and flag risky clauses for procurement">GenAI use case</button>
+        </div>
+        <div class="row">
+          <div><label class="lbl" for="persona">Who benefits?</label>
+            <select id="persona"><option value="auto">Let me guess</option><option>Finance Controller</option><option>Store Operations Manager</option><option>Regional Management</option><option>Procurement Specialist</option><option>Data Steward</option></select></div>
+          <div><label class="lbl" for="horizon">Horizon</label>
+            <select id="horizon"><option value="mvp">MVP this quarter</option><option value="full">Full release</option></select></div>
+        </div>
+        <button class="btn btn-primary" id="refineBtn" style="width:100%;justify-content:center">Refine it →</button>
+        <p class="honest">Honest note: this runs entirely in your browser with simple rules, not an LLM. It's a sketch of <em>how I structure</em> refinement. In real life, AI drafts this and the conversation with the team makes it right.</p>
+      </div>
+      <div class="card panel out" id="out">
+        <div class="out-empty"><div><div style="font-size:34px;margin-bottom:8px">🧭</div>Pick an example or write your own, then hit <b>Refine it</b>.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HEALTH CHECK -->
+<section id="health">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="kicker">For hiring managers</span>
+      <h2>Is your data &amp; AI initiative red, amber or green?</h2>
+      <p class="lede">Six questions I ask in my first week. Answer honestly and get a status plus the first three moves I'd make.</p>
+    </div>
+    <div class="hc">
+      <div class="card panel" id="questions"></div>
+      <div class="card verdict" id="verdict">
+        <div class="big-light"><i class="r" id="lr"></i><i class="a" id="la"></i><i class="g" id="lg"></i></div>
+        <h3 id="vTitle">Waiting for your answers…</h3>
+        <p class="muted small" id="vSub" style="margin-top:6px">Answer the questions on the left.</p>
+        <div id="vActions"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 90 DAYS -->
+<section id="plan" style="background:var(--surface);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="kicker">If you hire me</span>
+      <h2>My first 90 days as your Product Owner</h2>
+    </div>
+    <div class="plan">
+      <div class="card reveal"><div class="d">30</div><h3 style="margin-top:8px">Listen &amp; map</h3><ul><li>Meet every stakeholder and end‑user group</li><li>Map data sources, owners and quality hot‑spots</li><li>Baseline the honest status: scope, risks, RAG</li></ul></div>
+      <div class="card reveal"><div class="d">60</div><h3 style="margin-top:8px">Focus &amp; align</h3><ul><li>A value‑ranked backlog everyone understands</li><li>Acceptance Criteria &amp; DoD agreed with the customer</li><li>Pick one AI use case with real data behind it</li></ul></div>
+      <div class="card reveal"><div class="d">90</div><h3 style="margin-top:8px">Deliver &amp; show</h3><ul><li>First increment in users' hands, reviewed together</li><li>Steering rhythm with clear decisions and owners</li><li>Roadmap and release plan tied to measurable outcomes</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="kicker">Toolbox</span><h2>What I bring to the team</h2></div>
+    <div class="skills">
+      <div class="card reveal"><h3>Product ownership</h3><div class="chips"><span class="chip">Scrum</span><span class="chip">Backlog prioritization</span><span class="chip">Product roadmap</span><span class="chip">Release planning</span><span class="chip">User stories</span><span class="chip">Acceptance Criteria</span><span class="chip">Definition of Done</span><span class="chip">Sprint Reviews</span></div></div>
+      <div class="card reveal"><h3>Delivery &amp; steering</h3><div class="chips"><span class="chip">Risk management</span><span class="chip">Steering committees</span><span class="chip">Back‑to‑Green plans</span><span class="chip">Vendor management</span><span class="chip">Contracts &amp; SoWs</span><span class="chip">IT Service KPIs</span><span class="chip">Cross‑functional leadership</span></div></div>
+      <div class="card reveal"><h3>Data &amp; AI platforms</h3><div class="chips"><span class="chip">Azure Data Platform</span><span class="chip">Databricks</span><span class="chip">Tableau</span><span class="chip">Conversational Analytics</span><span class="chip">Collibra</span><span class="chip">Syniti</span><span class="chip">SAP MDG</span><span class="chip">SAP ERP</span></div></div>
+      <div class="card reveal"><h3>Governance &amp; people</h3><div class="chips"><span class="chip">Data governance</span><span class="chip">Data quality rules</span><span class="chip">Data ownership</span><span class="chip">Metadata &amp; lineage</span><span class="chip">Data literacy training</span><span class="chip">Stakeholder alignment</span><span class="chip">English (ESL teacher)</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience" style="background:var(--surface);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="kicker">Experience</span><h2>Where I've done the work</h2></div>
+    <div class="xp">
+      <div class="xp-item reveal"><div class="xp-when">Apr 2026 → now<br>Mülheim a. d. Ruhr</div><div><h3>Product Owner, Financial Reporting</h3><div class="org">ALDI SÜD · Senior Staff Expert</div><ul><li>Steering the team delivering a unified, governed, scalable Data Model on Azure Data Platform for harmonized financial reporting, KPIs, ad‑hoc analytics and AI‑driven Conversational Analytics</li><li>Aligning iteration scope, timelines and priorities with stakeholders; guiding user stories, sprint planning and backlog prioritization</li><li>Running Sprint Reviews for business and end users; representing the team in Strategic &amp; Investment Steering</li></ul></div></div>
+      <div class="xp-item reveal"><div class="xp-when">Jul 2025 → Apr 2026</div><div><h3>Product Owner, KPI Reporting</h3><div class="org">ALDI SÜD · Senior Staff Expert</div><ul><li>Steered a hybrid internal/external team building KPIs and reports across Azure/Databricks and Tableau for a global KPI harmonization initiative</li><li>Introduced a Stream Lead structure; defined scope, delivery scenarios and roadmap</li><li>Defined and drove Back‑to‑Yellow and Back‑to‑Green measures that improved the initiative's status; set up a direct reporting line to Management</li></ul></div></div>
+      <div class="xp-item reveal"><div class="xp-when">Oct 2024 → Jul 2025</div><div><h3>Product Owner, Data &amp; Analytics &amp; Data Quality</h3><div class="org">ALDI SÜD · Senior Staff Expert</div><ul><li>Led delivery of a Data Quality Reconciliation Solution to remove critical incidents affecting store operations</li><li>Owned product lifecycle, roadmap, release plan, Sprint Goals, DoD, testing approach and risk mitigation</li></ul></div></div>
+      <div class="xp-item reveal"><div class="xp-when">May 2021 → Oct 2024</div><div><h3>Coordination Lead · Senior IT Consultant · IT Consultant</h3><div class="org">ALDI SÜD</div><ul><li>IT Service Owner for the Data Quality Service; stabilized the platform and improved report refresh frequency</li><li>Coordinated vendors: Vendor Value Assurance Package, governance models, contracts, SoWs, deliverable approval</li><li>Application Owner for Collibra; led Syniti Knowledge Tier catalog implementation, Collibra Edge, lineage harvesting and JDBC integrations</li><li>Contributed to Solution Architecture for the Central Data Office and Data &amp; Analytics units</li></ul></div></div>
+      <div class="xp-item reveal"><div class="xp-when">Oct 2020 → May 2021<br>Łódź</div><div><h3>Master Data Process &amp; Governance Manager</h3><div class="org">Takeda</div><ul><li>Implemented Collibra for master data governance; defined business and data quality rules; operationalized Data Ownership</li><li>Drove SAP MDG 1909 for Vendor &amp; Customer (Business Partner) domains; built a logical data model; launched Data Literacy training</li></ul></div></div>
+      <div class="xp-item reveal"><div class="xp-when">2014 → 2020<br>Łódź</div><div><h3>Data analyst roles</h3><div class="org">Barry Callebaut · Flint Group · Infosys BPM (P&amp;G)</div>
+        <ul><li>Master data projects, SAP migrations for non‑SAP entities and greenfield factories, data cleansing and governance</li><li>On‑site SAP pre‑study in South Africa; trainings for SAP, Winshuttle and business users</li><li>Business SPOC and team lead for P&amp;G's North American region</li></ul>
+        <details class="more"><summary>Earlier: hospitality (2012–2014)</summary><p class="muted small" style="margin-top:8px">Sales &amp; Marketing Specialist at Fabryka Wełny Hotel &amp; Spa, and Receptionist / shift lead at Hotel Andel's Łódź. Events, quotations, revenue reports, and a lot of calm problem‑solving at 3am.</p></details>
+      </div></div>
+    </div>
+    <div class="sec-head reveal" style="margin-top:56px;margin-bottom:16px"><span class="kicker">Education</span></div>
+    <div class="cases">
+      <div class="card case reveal" style="padding:20px"><h3 style="font-size:18px">Master's, Teaching English as a Second Language</h3><p class="muted small" style="margin:0">Akademia Humanistyczno‑Ekonomiczna w Łodzi · 2015–2017</p></div>
+      <div class="card case reveal" style="padding:20px"><h3 style="font-size:18px">Bachelor's, Teaching English as a Second Language</h3><p class="muted small" style="margin:0">Społeczna Akademia Nauk · 2009–2012</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- RECRUITER FAST LANE -->
+<section id="fast-lane">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="kicker">Recruiter fast lane</span><h2>Everything you need in 30 seconds</h2></div>
+    <div class="fast">
+      <div class="card reveal">
+        <h3>The pitch</h3>
+        <div class="pitch" id="pitchTxt">Dawid Ciesielski is a Product Owner at ALDI SÜD with 12 years in data. He steers teams delivering governed data products on Azure, Databricks and Tableau, including the data model behind AI‑driven Conversational Analytics. He has brought a global KPI initiative back to green, built data governance from scratch at Takeda, and runs Sprint Reviews and steering committees with senior leadership. Based in Düsseldorf.</div>
+        <div style="display:flex;gap:10px;flex-wrap:wrap">
+          <button class="btn btn-primary" id="copyPitch">Copy pitch</button>
+          <button class="btn btn-ghost" onclick="window.print()">Print one‑pager</button>
+        </div>
+      </div>
+      <div class="card reveal">
+        <h3>Good fit if you're hiring a…</h3>
+        <ul class="fit">
+          <li><span class="dot g"></span><span><b>Senior Product Owner</b>, Data &amp; Analytics / AI</span></li>
+          <li><span class="dot g"></span><span><b>Product Manager</b>, data platforms or AI‑enabled analytics</span></li>
+          <li><span class="dot g"></span><span><b>Project / Program Manager</b>, digital or data transformation</span></li>
+          <li><span class="dot a"></span><span><b>Data Governance Lead</b> with a delivery focus</span></li>
+        </ul>
+        <p class="muted small" style="margin-top:16px">📍 Düsseldorf, NRW · open to hybrid across the Rhine‑Ruhr region</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" style="padding-top:0">
+  <div class="wrap">
+    <div class="contact reveal">
+      <div>
+        <span class="kicker" style="color:#6fd3cd">Let's talk</span>
+        <h2 style="margin:10px 0 12px">Have a data &amp; AI product that needs an owner?</h2>
+        <p>I'm happy to have a short intro call and hear what you're building, what's red, and what green would look like.</p>
+      </div>
+      <div class="links">
+        <a href="https://www.linkedin.com/in/dawid-ciesielski" target="_blank" rel="noopener">LinkedIn <span>↗</span></a>
+        <a href="mailto:dawid.ciesielski90@gmail.com">Email <span>↗</span></a>
+        <a href="https://github.com/dawiddus" target="_blank" rel="noopener">GitHub <span>↗</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer><div class="wrap"><span>© <span id="yr"></span> Dawid Ciesielski · Built with plain HTML, hosted on GitHub Pages</span><span>Status of this page: <span class="dot g"></span> green</span></div></footer>
+<div class="toast" id="toast"></div>
+
+<script>
+(function(){
+  // theme
+  var root=document.documentElement, KEY='dc-theme';
+  try{var s=localStorage.getItem(KEY); if(s) root.setAttribute('data-theme',s);}catch(e){}
+  document.getElementById('themeBtn').addEventListener('click',function(){
+    var cur=root.getAttribute('data-theme');
+    var dark=cur? cur==='dark' : matchMedia('(prefers-color-scheme: dark)').matches;
+    var next=dark?'light':'dark'; root.setAttribute('data-theme',next);
+    try{localStorage.setItem(KEY,next);}catch(e){}
+  });
+  document.getElementById('yr').textContent=new Date().getFullYear();
+
+  function toast(t){var el=document.getElementById('toast');el.textContent=t;el.classList.add('show');setTimeout(function(){el.classList.remove('show')},1800);}
+
+  // status board animation
+  var steps=[].slice.call(document.querySelectorAll('#steps li')), pill=document.getElementById('pill'), pd=document.getElementById('pillDot'), pt=document.getElementById('pillTxt'), timers=[];
+  function setPill(c,t){pill.className='status-pill '+c;pd.className='dot '+c;pt.textContent=t;}
+  function play(){
+    timers.forEach(clearTimeout);timers=[];
+    steps.forEach(function(s){s.classList.remove('on')});setPill('r','RED');
+    steps.forEach(function(s,i){timers.push(setTimeout(function(){s.classList.add('on'); if(i===1)setPill('a','AMBER'); if(i===3)setPill('g','GREEN');},900+i*1100));});
+  }
+  document.getElementById('replay').addEventListener('click',play);
+  if(matchMedia('(prefers-reduced-motion: reduce)').matches){steps.forEach(function(s){s.classList.add('on')});setPill('g','GREEN');}else play();
+
+  // reveal
+  var io='IntersectionObserver' in window? new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}})},{threshold:.12}):null;
+  document.querySelectorAll('.reveal').forEach(function(el){io?io.observe(el):el.classList.add('in')});
+
+  // flip cards
+  document.querySelectorAll('.flip').forEach(function(f){f.addEventListener('click',function(){f.classList.toggle('flipped')})});
+
+  // ---------- Story Refiner ----------
+  var req=document.getElementById('req');
+  document.querySelectorAll('[data-ex]').forEach(function(b){b.addEventListener('click',function(){req.value=b.getAttribute('data-ex');refine();})});
+  var themes=[
+    {k:/(ask|plain english|natural language|chat|conversational|question)/i, id:'conv', persona:'Finance Controller', cap:'ask questions about my KPIs in plain language', val:'I get trusted answers in minutes instead of waiting days for an ad‑hoc report'},
+    {k:/(quality|inconsisten|wrong|error|incident|reconcil|master data)/i, id:'dq', persona:'Store Operations Manager', cap:'be alerted to inconsistent master data before it reaches the stores', val:'critical store incidents are prevented instead of fixed afterwards'},
+    {k:/(dashboard|report|kpi|tableau|harmoni|margin|revenue)/i, id:'kpi', persona:'Regional Management', cap:'see harmonized KPIs in one dashboard', val:'every country is compared on the same definitions and decisions are faster'},
+    {k:/(ai|genai|llm|summar|contract|clause|classif|predict)/i, id:'ai', persona:'Procurement Specialist', cap:'get an AI‑generated summary with risky items flagged', val:'I spend my time on judgement, not on reading'}
+  ];
+  function pick(text){for(var i=0;i<themes.length;i++){if(themes[i].k.test(text))return themes[i];}return {id:'gen',persona:'Business User',cap:'have this need solved in the product',val:'I can do my job with less manual effort'};}
+  function esc(s){return s.replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+  function refine(){
+    var text=req.value.trim(); var out=document.getElementById('out');
+    if(!text){req.focus();toast('Write a request or pick an example');return;}
+    var th=pick(text), pSel=document.getElementById('persona').value, persona=pSel==='auto'?th.persona:pSel, mvp=document.getElementById('horizon').value==='mvp';
+    var daily=/(every|daily|morning|weekly|real.?time)/i.test(text);
+    var ac=[], dod=['Code reviewed and merged','Tested against agreed Acceptance Criteria','Data lineage and KPI definitions documented','Demoed to end users in the Sprint Review','Access and data privacy checks passed'], qs=[], risks=[];
+    if(th.id==='conv'){
+      ac.push(['Given','a governed financial data model is available','When','I ask "What was margin by region last week?"','Then','I receive an answer that matches the certified report within agreed tolerance']);
+      ac.push(['Given','my question is ambiguous','When','the assistant cannot map it to a certified KPI','Then','it asks a clarifying question instead of guessing']);
+      qs=['Which KPIs are certified today, and who owns their definitions?','Which regions and which level of detail are in scope for the MVP?','How will users know an answer is trustworthy (source, timestamp)?'];
+      risks=['Hallucinated answers on non‑governed data','KPI definitions differing across countries'];
+      dod.push('Answer accuracy evaluated on a test set of real business questions');
+    } else if(th.id==='dq'){
+      ac.push(['Given','a price or article record differs between source and target systems','When','the reconciliation run completes','Then','the inconsistency is flagged with record, rule and owner']);
+      ac.push(['Given','a critical inconsistency is detected','When','it affects store operations','Then','the responsible data owner is notified before the next store update']);
+      qs=['Which inconsistencies caused the most store incidents last quarter?','Who is the data owner for each rule?','What is the acceptable detection delay?'];
+      risks=['Alert fatigue if rules are too noisy','Unclear ownership of fixes'];
+    } else if(th.id==='kpi'){
+      ac.push(['Given','harmonized KPI definitions are signed off','When','I open the dashboard','Then','every country shows the same KPIs calculated the same way']);
+      ac.push(['Given','a KPI is shown','When','I hover over it','Then','I see its definition, owner and last refresh time']);
+      qs=['Which KPIs are must‑have for the first release?','Who signs off the global definitions?','Which countries go first?'];
+      risks=['Local definitions resisting harmonization','Performance on large Databricks tables'];
+    } else if(th.id==='ai'){
+      ac.push(['Given','a document is uploaded','When','the AI summary is generated','Then','each flagged item links to the exact source passage']);
+      ac.push(['Given','the AI is uncertain','When','confidence is below the agreed threshold','Then','the item is routed to a human reviewer']);
+      qs=['What does a "risky" item mean to the business, with examples?','What data can legally be sent to the model?','How will we measure that the summary saves time?'];
+      risks=['Sensitive data leaving the approved environment','Over‑trust in AI output without review'];
+      dod.push('Human‑in‑the‑loop review step in place and documented');
+    } else {
+      ac.push(['Given','the need is in scope','When','the user performs the main task','Then','the outcome matches the agreed expected result']);
+      qs=['What problem does this solve, and for whom?','How do we measure success?','What happens if we do nothing?'];
+      risks=['Unclear value and scope'];
+    }
+    if(daily) ac.push(['Given','the scheduled refresh has run','When','users start their day','Then','data is no older than the agreed freshness SLA']);
+    if(mvp){qs.push('What is the smallest slice that gives users real value this quarter?');}
+    var invest=[['I','Independent',true],['N','Negotiable',true],['V','Valuable',true],['E','Estimable',qs.length<=4],['S','Small',mvp],['T','Testable',true]];
+    var h='<h4>User story</h4><p class="story">As a <b>'+esc(persona)+'</b>, I want to <b>'+esc(th.cap)+'</b>, so that <b>'+esc(th.val)+'</b>.</p>';
+    h+='<h4>Acceptance criteria</h4><ul class="ac">'+ac.map(function(a){return '<li><span class="k">'+a[0]+'</span> '+esc(a[1])+'<br><span class="k">'+a[2]+'</span> '+esc(a[3])+'<br><span class="k">'+a[4]+'</span> '+esc(a[5])+'</li>'}).join('')+'</ul>';
+    h+='<h4>Definition of Done</h4><ul class="checks">'+dod.map(function(d){return '<li>'+esc(d)+'</li>'}).join('')+'</ul>';
+    h+='<h4>Questions I\'d ask before committing</h4><ol class="qs">'+qs.map(function(q){return '<li>'+esc(q)+'</li>'}).join('')+'</ol>';
+    h+='<h4>Risks to raise at steering</h4><ul class="qs">'+risks.map(function(r){return '<li>'+esc(r)+'</li>'}).join('')+'</ul>';
+    h+='<h4>INVEST check</h4><div class="invest">'+invest.map(function(i){return '<span class="'+(i[2]?'ok':'warn')+'" title="'+i[1]+'">'+i[0]+' · '+i[1]+(i[2]?' ✓':' ?')+'</span>'}).join('')+'</div>';
+    if(!mvp) h+='<p class="small muted" style="margin-top:10px">Tip: "Full release" is usually too big for one sprint. I would split it into slices by region or by KPI.</p>';
+    out.innerHTML=h;
+    if(window.innerWidth<900) out.scrollIntoView({behavior:'smooth',block:'start'});
+  }
+  document.getElementById('refineBtn').addEventListener('click',refine);
+
+  // ---------- Health check ----------
+  var Q=[
+    ['Is there one person accountable for the product outcome, not just the tool?','Name a single Product Owner with a mandate, and agree what "done" means with the customer'],
+    ['Are your KPI and data definitions agreed and documented?','Run a KPI harmonization sprint: one definition, one owner, one source per KPI'],
+    ['Do you know the quality of the data your AI will use?','Set up data quality rules and reconciliation before scaling any AI feature'],
+    ['Do end users see working increments at least every month?','Start Sprint Reviews with real business users, against agreed Acceptance Criteria'],
+    ['Does senior management get an honest RAG status with named risks?','Set up a steering rhythm with Back‑to‑Green measures and clear owners'],
+    ['Is there a plan for adoption: training, docs, champions?','Budget enablement from day one: data literacy sessions and a champion network']
+  ];
+  var ans=new Array(Q.length).fill(null), qBox=document.getElementById('questions');
+  qBox.innerHTML=Q.map(function(q,i){return '<div class="q"><p>'+(i+1)+'. '+q[0]+'</p><div class="seg" role="group" aria-label="Answer '+(i+1)+'"><button data-q="'+i+'" data-v="2">Yes</button><button data-q="'+i+'" data-v="1">Partly</button><button data-q="'+i+'" data-v="0">No</button></div></div>'}).join('');
+  qBox.addEventListener('click',function(e){var b=e.target.closest('button[data-q]');if(!b)return;var i=+b.dataset.q;ans[i]=+b.dataset.v;b.parentNode.querySelectorAll('button').forEach(function(x){x.classList.toggle('sel',x===b)});verdict();});
+  function verdict(){
+    var done=ans.filter(function(a){return a!==null}).length, score=ans.reduce(function(s,a){return s+(a||0)},0);
+    var lr=document.getElementById('lr'),la=document.getElementById('la'),lg=document.getElementById('lg');
+    [lr,la,lg].forEach(function(x){x.classList.remove('on')});
+    var t=document.getElementById('vTitle'),s=document.getElementById('vSub'),a=document.getElementById('vActions');
+    if(done<Q.length){t.textContent=done+' of '+Q.length+' answered';s.textContent='Keep going. Status appears when all six are answered.';a.innerHTML='';return;}
+    var pct=score/(Q.length*2);
+    if(pct>=.8){lg.classList.add('on');t.textContent='Green: a strong foundation';s.textContent='You\'re ready to scale AI. A PO here would focus on value and speed.';}
+    else if(pct>=.5){la.classList.add('on');t.textContent='Amber: fixable, but act now';s.textContent='Solid parts, with gaps that will hurt as soon as AI goes to production.';}
+    else{lr.classList.add('on');t.textContent='Red: needs a Back‑to‑Green plan';s.textContent='Very common, and very recoverable with clear ownership and a plan.';}
+    var weak=ans.map(function(v,i){return [v,i]}).sort(function(x,y){return x[0]-y[0]}).filter(function(x){return x[0]<2}).slice(0,3);
+    a.innerHTML=weak.length? '<h4 class="kicker" style="margin:18px 0 4px">My first three moves</h4><ol>'+weak.map(function(w){return '<li>'+Q[w[1]][1]+'</li>'}).join('')+'</ol><a class="btn btn-primary" style="margin-top:14px" href="#contact">Talk to me about it →</a>'
+      : '<p style="margin-top:14px">Nothing urgent. I\'d love to help you scale. <a href="#contact">Let\'s talk</a>.</p>';
+  }
+
+  // copy pitch
+  document.getElementById('copyPitch').addEventListener('click',function(){
+    var t=document.getElementById('pitchTxt').textContent;
+    if(navigator.clipboard){navigator.clipboard.writeText(t).then(function(){toast('Pitch copied')},function(){toast('Select the text to copy')});}else toast('Select the text to copy');
+  });
+})();
+</script>
+</body>
+</html>
