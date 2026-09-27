@@ -11,7 +11,7 @@
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230f3d3e'/%3E%3Ccircle cx='10' cy='16' r='3' fill='%23e5484d'/%3E%3Ccircle cx='16' cy='16' r='3' fill='%23f5a524'/%3E%3Ccircle cx='22' cy='16' r='3' fill='%2330a46c'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,650&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&family=Caveat:wght@500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,650&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
 <style>
 :root{
   --bg:#f7f5f0; --surface:#ffffff; --surface-2:#efece4; --ink:#16201f; --ink-2:#4a5654; --ink-3:#7a8583;
@@ -391,32 +391,34 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
 .hero-visual.board-on .board-pane{opacity:1;transform:none;pointer-events:auto}
 .hero-visual.board-on .ring-pane{opacity:0;transform:scale(.96);pointer-events:none}
 .back-ring{display:block;margin:12px auto 0}
-.doodle{position:relative;width:100%;max-width:440px;aspect-ratio:1/1;margin:0 auto;container-type:inline-size}
-.doodle svg{width:100%;height:100%;display:block;overflow:visible}
-.doodle .house{fill:#1b2322;stroke:var(--ink);stroke-width:2.6;stroke-linejoin:round}
-.doodle .sk{fill:none;stroke:var(--ink);stroke-width:1.2;opacity:.45;stroke-linecap:round}
-.doodle .ln{fill:none;stroke:var(--ink);stroke-width:2.4;stroke-linecap:round}
-.doodle .arw{fill:none;stroke:var(--ink-2);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
-.doodle .spark{fill:none;stroke:var(--green);stroke-width:2.4;stroke-linecap:round;animation:twinkle 7s infinite}
-.lamp{stroke:#0e1414;stroke-width:3;transition:fill .4s}
-.l-red{fill:#4a2a2b;animation:lr 7s infinite}
-.l-amber{fill:#4a3b1f;animation:la 7s infinite}
-.l-green{fill:#1f4030;animation:lg 7s infinite}
-@keyframes lr{0%,27%{fill:#ef4444;filter:drop-shadow(0 0 14px #ef4444)}31%,100%{fill:#4a2a2b;filter:none}}
-@keyframes la{0%,28%{fill:#4a3b1f;filter:none}32%,58%{fill:#f5a524;filter:drop-shadow(0 0 14px #f5a524)}62%,100%{fill:#4a3b1f;filter:none}}
-@keyframes lg{0%,59%{fill:#1f4030;filter:none}63%,100%{fill:#30c47a;filter:drop-shadow(0 0 16px #30c47a)}}
-@keyframes twinkle{0%,60%{opacity:0}66%,100%{opacity:1}}
-.note{position:absolute;width:28%;font-family:"Caveat",cursive;font-size:5.4cqw;line-height:1.05;color:var(--ink-2);opacity:.45}
-.note b{display:block;font-size:6.6cqw;font-weight:700}
-.n-red,.n-green{text-align:right}
-.n-red b{color:var(--red)}.n-amber b{color:var(--amber)}.n-green b{color:var(--green)}
-.n-red{animation:nr 7s infinite}.n-amber{animation:na 7s infinite}.n-green{animation:ng 7s infinite}
-@keyframes nr{0%,27%{opacity:1}31%,100%{opacity:.45}}
-@keyframes na{0%,28%{opacity:.45}32%,58%{opacity:1}62%,100%{opacity:.45}}
-@keyframes ng{0%,59%{opacity:.45}63%,100%{opacity:1}}
-.note.n-foot{width:auto;opacity:.8;font-size:4.8cqw;color:var(--ink-3)}
-@media (max-width:900px){.doodle{max-width:360px}.board-pane{display:none}.hero-visual.board-on .board-pane{display:block}.hero-visual.board-on .ring-pane{display:none}}
-@media (prefers-reduced-motion:reduce){.lamp,.note,.doodle .spark{animation:none}.l-green{fill:#30c47a}.note{opacity:1}}
+.stage{position:relative;width:100%;max-width:470px;margin:0 auto;container-type:inline-size}
+.glass{position:absolute;background:color-mix(in srgb,var(--surface) 88%,transparent);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border:1px solid var(--line);border-radius:4.4cqw;box-shadow:0 1px 2px rgba(0,0,0,.06),0 30px 60px -24px rgba(10,20,20,.35)}
+.stage .main-card{position:relative;margin:25cqw 4cqw 2cqw;padding:5cqw 5cqw 3cqw;z-index:1}
+.mc-head{margin-bottom:3cqw}
+.mc-head b{display:flex;align-items:center;gap:2.4cqw;font-size:4.4cqw;font-weight:700;letter-spacing:-.01em}
+.mc-head span{font-size:2.8cqw;color:var(--ink-3)}
+.mc-row{display:flex;align-items:center;gap:3cqw;padding:2.4cqw 0;border-top:1px solid var(--line)}
+.rg{display:flex;gap:1cqw;padding:1.4cqw 1.8cqw;background:#172020;border-radius:999px;flex:none}
+.rg i{width:2.2cqw;height:2.2cqw;border-radius:50%;background:#34403f}
+.rg i:nth-child(1){animation:dr 1.4s var(--d) forwards}
+.rg i:nth-child(2){animation:da 1.4s var(--d) forwards}
+.rg i:nth-child(3){animation:dg 1.4s var(--d) forwards}
+@keyframes dr{0%{background:#34403f}20%,35%{background:#ef4444;box-shadow:0 0 1.6cqw #ef4444}100%{background:#5a2c2d;box-shadow:none}}
+@keyframes da{0%,35%{background:#34403f}50%,65%{background:#f5a524;box-shadow:0 0 1.6cqw #f5a524}100%{background:#5a4620;box-shadow:none}}
+@keyframes dg{0%,65%{background:#34403f}85%,100%{background:#30c47a;box-shadow:0 0 1.8cqw #30c47a}}
+.rt{flex:1;min-width:0}
+.rt b{display:block;font-size:3.3cqw;font-weight:650;line-height:1.25}
+.rt span{font-size:2.7cqw;color:var(--ink-3)}
+.mc-row .mc-st{font-style:normal;font-size:2.6cqw;font-weight:700;color:var(--green);background:var(--green-soft);padding:1cqw 2.2cqw;border-radius:999px;white-space:nowrap;opacity:0;animation:pillin .4s calc(var(--d) + 1.2s) forwards}
+@keyframes pillin{to{opacity:1}}
+.chat-card{right:0;top:0;width:52%;padding:3.4cqw 3.8cqw;z-index:2;animation:floaty 7s ease-in-out infinite}
+.cc-lbl{display:block;font-family:var(--mono);font-size:2.3cqw;letter-spacing:.08em;text-transform:uppercase;color:var(--brand);font-weight:600;margin-bottom:1.8cqw}
+.chat-card .q{margin:0 0 1.6cqw auto;width:max-content;max-width:100%;font-size:2.9cqw;background:var(--brand);color:var(--brand-ink);padding:1.4cqw 2.6cqw;border-radius:3cqw 3cqw .8cqw 3cqw}
+.chat-card .a{margin:0;font-size:2.8cqw;color:var(--ink-2);display:flex;align-items:center;gap:1.6cqw}
+.chat-card .a i{font-style:normal;display:grid;place-items:center;width:3.6cqw;height:3.6cqw;border-radius:50%;background:var(--green);color:#fff;font-size:2.2cqw;flex:none}
+@keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-1.6cqw)}}
+@media (max-width:900px){.stage{max-width:400px}.board-pane{display:none}.hero-visual.board-on .board-pane{display:block}.hero-visual.board-on .ring-pane{display:none}}
+@media (prefers-reduced-motion:reduce){.rg i,.mc-row .mc-st,.chat-card{animation:none}.rg i:nth-child(3){background:#30c47a}.mc-row .mc-st{opacity:1}}
 .ask{margin-top:26px}
 .ask-q{font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--brand);font-weight:600;margin:0 0 10px}
 .probs{display:grid;grid-template-columns:1fr 1fr;gap:10px}
@@ -526,24 +528,19 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
 
     <div class="hero-visual" id="heroVisual">
       <div class="ring-pane">
-        <div class="doodle" role="img" aria-label="Doodle of a traffic light: red for messy data in 2014, amber for data governance in 2020, green for data and AI products now">
-          <svg viewBox="0 0 440 440" aria-hidden="true">
-            <path class="house" d="M165,52 C190,44 225,44 247,52 C256,60 255,190 254,318 C252,330 238,334 205,334 C172,334 158,330 156,318 C155,200 154,64 165,52 Z"/>
-            <path class="sk" d="M168,48 C195,41 228,43 250,56 C258,120 257,250 252,322 C236,338 180,337 160,325 C152,250 153,120 158,58 Z"/>
-            <path class="sk" d="M172,90 C182,64 228,64 238,90 M172,180 C182,154 228,154 238,180 M172,270 C182,244 228,244 238,270"/>
-            <path class="ln" d="M202,334 C204,370 201,398 203,424 M210,334 C211,366 209,400 212,424 M150,426 C185,418 230,420 268,428"/>
-            <circle class="lamp l-red" cx="205" cy="102" r="30"/>
-            <circle class="lamp l-amber" cx="205" cy="192" r="30"/>
-            <circle class="lamp l-green" cx="205" cy="282" r="30"/>
-            <path class="arw" d="M120,80 C142,72 158,84 166,97 M157,94 L167,98 L166,87"/>
-            <path class="arw" d="M320,170 C294,162 262,172 247,187 M257,187 L246,189 L250,178"/>
-            <path class="arw" d="M118,302 C140,312 156,300 167,288 M157,290 L168,287 L164,298"/>
-            <path class="spark" d="M276,256 v18 M267,265 h18 M302,296 v10 M297,301 h10"/>
-          </svg>
-          <span class="note n-red" style="left:1%;top:8%"><b>2014</b>data ops,<br>messy master data</span>
-          <span class="note n-amber" style="right:1%;top:31%"><b>2020</b>governance:<br>owners &amp; rules</span>
-          <span class="note n-green" style="left:1%;top:61%"><b>now</b>data &amp; AI<br>products people trust</span>
-          <span class="note n-foot" style="right:0;top:76%;width:30%">12 years,<br>one direction ↗</span>
+        <div class="stage" role="img" aria-label="Delivery board: four data initiatives moving from red to green, with an AI assistant answering from certified KPIs">
+          <div class="glass main-card">
+            <div class="mc-head"><b>Delivery board</b><span>Dawid Ciesielski · Product Owner</span></div>
+            <div class="mc-row" style="--d:.3s"><div class="rg"><i></i><i></i><i></i></div><div class="rt"><b>Global KPI harmonization</b><span>Azure · Databricks · Tableau</span></div><em class="mc-st">Back to green</em></div>
+            <div class="mc-row" style="--d:.7s"><div class="rg"><i></i><i></i><i></i></div><div class="rt"><b>Financial data model</b><span>Powers Conversational Analytics</span></div><em class="mc-st">On track</em></div>
+            <div class="mc-row" style="--d:1.1s"><div class="rg"><i></i><i></i><i></i></div><div class="rt"><b>Data Quality Reconciliation</b><span>Protects store operations</span></div><em class="mc-st">Delivered</em></div>
+            <div class="mc-row" style="--d:1.5s"><div class="rg"><i></i><i></i><i></i></div><div class="rt"><b>Master data governance</b><span>Collibra · SAP MDG</span></div><em class="mc-st">Delivered</em></div>
+          </div>
+          <div class="glass chat-card">
+            <span class="cc-lbl">Conversational Analytics</span>
+            <p class="q">Margin by region, last week?</p>
+            <p class="a"><i>✓</i>Answered from certified KPIs</p>
+          </div>
         </div>
       </div>
       <div class="board-pane">
