@@ -8,7 +8,7 @@
 <meta property="og:title" content="Dawid Ciesielski · Product Owner, Data & AI">
 <meta property="og:description" content="AI can write the user story. Someone still has to own the outcome. Product Owner for governed data & AI products.">
 <meta property="og:type" content="website">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230f3d3e'/%3E%3Ccircle cx='10' cy='16' r='3' fill='%23e5484d'/%3E%3Ccircle cx='16' cy='16' r='3' fill='%23f5a524'/%3E%3Ccircle cx='22' cy='16' r='3' fill='%2330a46c'/%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='9' fill='%230f5b5c'/%3E%3Ctext x='16' y='21' font-family='Arial,sans-serif' font-weight='700' font-size='13' fill='white' text-anchor='middle'%3EDC%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,650&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
@@ -68,8 +68,7 @@ section{padding:88px 0}
 header.nav{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--bg) 86%,transparent);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
 .nav .wrap{display:flex;align-items:center;justify-content:space-between;height:60px;gap:16px}
 .logo{display:flex;align-items:center;gap:10px;font-weight:700;text-decoration:none;color:var(--ink);font-size:15px}
-.logo .lights{display:flex;gap:3px;padding:6px 7px;background:var(--ink);border-radius:8px}
-.logo .lights i{width:7px;height:7px;border-radius:50%;display:block}
+.logo .mono{display:grid;place-items:center;width:32px;height:32px;border-radius:10px;background:linear-gradient(135deg,var(--brand),var(--green));color:#fff;font-weight:800;font-size:13px;letter-spacing:-.03em}
 .nav-links{display:flex;gap:4px;align-items:center}
 .nav-links a{color:var(--ink-2);text-decoration:none;font-size:14px;font-weight:500;padding:8px 10px;border-radius:8px}
 .nav-links a:hover{color:var(--ink);background:var(--surface-2)}
@@ -391,34 +390,42 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
 .hero-visual.board-on .board-pane{opacity:1;transform:none;pointer-events:auto}
 .hero-visual.board-on .ring-pane{opacity:0;transform:scale(.96);pointer-events:none}
 .back-ring{display:block;margin:12px auto 0}
-.stage{position:relative;width:100%;max-width:470px;margin:0 auto;container-type:inline-size}
-.glass{position:absolute;background:color-mix(in srgb,var(--surface) 88%,transparent);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border:1px solid var(--line);border-radius:4.4cqw;box-shadow:0 1px 2px rgba(0,0,0,.06),0 30px 60px -24px rgba(10,20,20,.35)}
-.stage .main-card{position:relative;margin:25cqw 4cqw 2cqw;padding:5cqw 5cqw 3cqw;z-index:1}
-.mc-head{margin-bottom:3cqw}
-.mc-head b{display:flex;align-items:center;gap:2.4cqw;font-size:4.4cqw;font-weight:700;letter-spacing:-.01em}
-.mc-head span{font-size:2.8cqw;color:var(--ink-3)}
-.mc-row{display:flex;align-items:center;gap:3cqw;padding:2.4cqw 0;border-top:1px solid var(--line)}
-.rg{display:flex;gap:1cqw;padding:1.4cqw 1.8cqw;background:#172020;border-radius:999px;flex:none}
-.rg i{width:2.2cqw;height:2.2cqw;border-radius:50%;background:#34403f}
-.rg i:nth-child(1){animation:dr 1.4s var(--d) forwards}
-.rg i:nth-child(2){animation:da 1.4s var(--d) forwards}
-.rg i:nth-child(3){animation:dg 1.4s var(--d) forwards}
-@keyframes dr{0%{background:#34403f}20%,35%{background:#ef4444;box-shadow:0 0 1.6cqw #ef4444}100%{background:#5a2c2d;box-shadow:none}}
-@keyframes da{0%,35%{background:#34403f}50%,65%{background:#f5a524;box-shadow:0 0 1.6cqw #f5a524}100%{background:#5a4620;box-shadow:none}}
-@keyframes dg{0%,65%{background:#34403f}85%,100%{background:#30c47a;box-shadow:0 0 1.8cqw #30c47a}}
-.rt{flex:1;min-width:0}
-.rt b{display:block;font-size:3.3cqw;font-weight:650;line-height:1.25}
-.rt span{font-size:2.7cqw;color:var(--ink-3)}
-.mc-row .mc-st{font-style:normal;font-size:2.6cqw;font-weight:700;color:var(--green);background:var(--green-soft);padding:1cqw 2.2cqw;border-radius:999px;white-space:nowrap;opacity:0;animation:pillin .4s calc(var(--d) + 1.2s) forwards}
-@keyframes pillin{to{opacity:1}}
-.chat-card{right:0;top:0;width:52%;padding:3.4cqw 3.8cqw;z-index:2;animation:floaty 7s ease-in-out infinite}
-.cc-lbl{display:block;font-family:var(--mono);font-size:2.3cqw;letter-spacing:.08em;text-transform:uppercase;color:var(--brand);font-weight:600;margin-bottom:1.8cqw}
-.chat-card .q{margin:0 0 1.6cqw auto;width:max-content;max-width:100%;font-size:2.9cqw;background:var(--brand);color:var(--brand-ink);padding:1.4cqw 2.6cqw;border-radius:3cqw 3cqw .8cqw 3cqw}
-.chat-card .a{margin:0;font-size:2.8cqw;color:var(--ink-2);display:flex;align-items:center;gap:1.6cqw}
-.chat-card .a i{font-style:normal;display:grid;place-items:center;width:3.6cqw;height:3.6cqw;border-radius:50%;background:var(--green);color:#fff;font-size:2.2cqw;flex:none}
-@keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-1.6cqw)}}
-@media (max-width:900px){.stage{max-width:400px}.board-pane{display:none}.hero-visual.board-on .board-pane{display:block}.hero-visual.board-on .ring-pane{display:none}}
-@media (prefers-reduced-motion:reduce){.rg i,.mc-row .mc-st,.chat-card{animation:none}.rg i:nth-child(3){background:#30c47a}.mc-row .mc-st{opacity:1}}
+.orbit{position:relative;width:100%;max-width:460px;margin:0 auto}
+.orbit svg{width:100%;height:auto;display:block;overflow:visible}
+.orbit .s-red{stop-color:var(--red)}.orbit .s-amber{stop-color:var(--amber)}.orbit .s-green{stop-color:var(--green)}.orbit .s-brand{stop-color:var(--brand)}
+.orbit .s-glow{stop-color:var(--brand);stop-opacity:.22}.orbit .s-glow0{stop-color:var(--brand);stop-opacity:0}
+.spin{transform-box:view-box;transform-origin:220px 220px;animation:spin 40s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.o-outer{fill:none;stroke:var(--line);stroke-width:1.2;stroke-dasharray:2 9}
+.comet{fill:var(--green);filter:drop-shadow(0 0 6px var(--green))}
+.o-track{fill:none;stroke:var(--line);stroke-width:1.5}
+.o-arc{fill:none;stroke:url(#oGrad);stroke-width:4;stroke-linecap:round;stroke-dasharray:1;stroke-dashoffset:1;animation:odraw 2s .3s cubic-bezier(.6,0,.2,1) forwards}
+@keyframes odraw{to{stroke-dashoffset:0}}
+.o-core{fill:var(--surface);stroke:var(--line);stroke-width:1.2}
+.o-mono{font-family:var(--sans);font-weight:800;font-size:80px;letter-spacing:-4px;fill:url(#mGrad)}
+.o-name{font-family:var(--mono);font-size:10px;letter-spacing:3px;fill:var(--ink-3)}
+.o-ms{opacity:0;animation:oin .6s var(--d) forwards}
+@keyframes oin{to{opacity:1}}
+.o-dot{fill:var(--surface);stroke:var(--ink-3);stroke-width:2.5}
+.o-dot.d-r{stroke:var(--red)}.o-dot.d-a{stroke:var(--amber)}.o-dot.d-g{stroke:var(--green)}
+.o-ms.now .o-dot{fill:var(--green);stroke:var(--green)}
+.o-pulse{fill:var(--green);transform-box:fill-box;transform-origin:center;opacity:0;animation:opulse 2.2s 2.8s ease-out infinite}
+@keyframes opulse{0%{transform:scale(1);opacity:.5}100%{transform:scale(3.2);opacity:0}}
+.o-yr{font-family:var(--mono);font-size:11px;letter-spacing:1.5px;fill:var(--ink-3)}
+.o-lb{font-family:var(--sans);font-size:15px;font-weight:600;fill:var(--ink)}
+.o-ms.now .o-yr{fill:var(--green);font-weight:700}
+@media (max-width:900px){.orbit{max-width:380px}.board-pane{display:none}.hero-visual.board-on .board-pane{display:block}.hero-visual.board-on .ring-pane{display:none}}
+@media (prefers-reduced-motion:reduce){.spin,.o-arc,.o-ms,.o-pulse{animation:none}.o-arc{stroke-dashoffset:0}.o-ms{opacity:1}}
+.offclock{margin-top:16px;display:flex;align-items:center;gap:16px;flex-wrap:wrap;padding:16px 20px;border:1px dashed var(--line);border-radius:16px}
+.offclock p{margin:0;flex:1;min-width:220px;color:var(--ink-2);font-size:15px}
+.offclock p b{color:var(--ink)}
+.eq{display:flex;align-items:flex-end;gap:3px;height:22px}
+.eq i{width:4px;height:100%;border-radius:2px;background:linear-gradient(var(--green),var(--brand));transform-origin:bottom;animation:eq 1.1s ease-in-out infinite}
+.eq i:nth-child(2){animation-delay:-.3s}.eq i:nth-child(3){animation-delay:-.6s}.eq i:nth-child(4){animation-delay:-.9s}
+@keyframes eq{0%,100%{transform:scaleY(.35)}50%{transform:scaleY(1)}}
+.oc-links{display:flex;gap:8px}
+.oc-links a{padding:8px 14px;border-radius:999px;border:1px solid var(--line);text-decoration:none;color:var(--ink);font-weight:600;font-size:13.5px;background:var(--surface)}
+.oc-links a:hover{border-color:var(--brand)}
 .ask{margin-top:26px}
 .ask-q{font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--brand);font-weight:600;margin:0 0 10px}
 .probs{display:grid;grid-template-columns:1fr 1fr;gap:10px}
@@ -483,7 +490,7 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
 <header class="nav">
   <div class="wrap">
     <a class="logo" href="#top" aria-label="Dawid Ciesielski, home">
-      <span class="lights"><i style="background:#e5484d"></i><i style="background:#f5a524"></i><i style="background:#30a46c"></i></span>
+      <span class="mono">DC</span>
       Dawid Ciesielski
     </a>
     <nav class="nav-links" aria-label="Main">
@@ -528,19 +535,25 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
 
     <div class="hero-visual" id="heroVisual">
       <div class="ring-pane">
-        <div class="stage" role="img" aria-label="Delivery board: four data initiatives moving from red to green, with an AI assistant answering from certified KPIs">
-          <div class="glass main-card">
-            <div class="mc-head"><b>Delivery board</b><span>Dawid Ciesielski · Product Owner</span></div>
-            <div class="mc-row" style="--d:.3s"><div class="rg"><i></i><i></i><i></i></div><div class="rt"><b>Global KPI harmonization</b><span>Azure · Databricks · Tableau</span></div><em class="mc-st">Back to green</em></div>
-            <div class="mc-row" style="--d:.7s"><div class="rg"><i></i><i></i><i></i></div><div class="rt"><b>Financial data model</b><span>Powers Conversational Analytics</span></div><em class="mc-st">On track</em></div>
-            <div class="mc-row" style="--d:1.1s"><div class="rg"><i></i><i></i><i></i></div><div class="rt"><b>Data Quality Reconciliation</b><span>Protects store operations</span></div><em class="mc-st">Delivered</em></div>
-            <div class="mc-row" style="--d:1.5s"><div class="rg"><i></i><i></i><i></i></div><div class="rt"><b>Master data governance</b><span>Collibra · SAP MDG</span></div><em class="mc-st">Delivered</em></div>
-          </div>
-          <div class="glass chat-card">
-            <span class="cc-lbl">Conversational Analytics</span>
-            <p class="q">Margin by region, last week?</p>
-            <p class="a"><i>✓</i>Answered from certified KPIs</p>
-          </div>
+        <div class="orbit" role="img" aria-label="Career orbit: 2014 data operations, 2020 data governance, 2024 Product Owner, now data and AI products">
+          <svg viewBox="-50 -10 540 470" aria-hidden="true">
+            <defs>
+              <linearGradient id="oGrad" gradientUnits="userSpaceOnUse" x1="70" y1="0" x2="370" y2="0"><stop offset="0" class="s-red"/><stop offset=".5" class="s-amber"/><stop offset="1" class="s-green"/></linearGradient>
+              <linearGradient id="mGrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0" class="s-brand"/><stop offset="1" class="s-green"/></linearGradient>
+              <radialGradient id="coreGlow"><stop offset="0" class="s-glow"/><stop offset="1" class="s-glow0"/></radialGradient>
+            </defs>
+            <g class="spin"><circle class="o-outer" cx="220" cy="220" r="200"/><circle class="comet" cx="420" cy="220" r="4"/></g>
+            <circle class="o-track" cx="220" cy="220" r="150"/>
+            <path class="o-arc" pathLength="1" d="M113.9,326.1 A150,150 0 1 1 334.9,316.4"/>
+            <circle cx="220" cy="220" r="138" fill="url(#coreGlow)"/>
+            <circle class="o-core" cx="220" cy="220" r="112"/>
+            <text class="o-mono" x="220" y="244" text-anchor="middle">DC</text>
+            <text class="o-name" x="220" y="274" text-anchor="middle">DAWID CIESIELSKI</text>
+            <g class="o-ms" style="--d:1s"><circle class="o-dot d-r" cx="105.1" cy="316.4" r="6"/><text class="o-yr" x="86" y="338" text-anchor="end">2014</text><text class="o-lb" x="86" y="356" text-anchor="end">Data operations</text></g>
+            <g class="o-ms" style="--d:1.4s"><circle class="o-dot d-a" cx="97.1" cy="134" r="6"/><text class="o-yr" x="76" y="112" text-anchor="end">2020</text><text class="o-lb" x="76" y="130" text-anchor="end">Governance</text></g>
+            <g class="o-ms" style="--d:1.8s"><circle class="o-dot d-g" cx="271.3" cy="79" r="6"/><text class="o-yr" x="290" y="48">2024</text><text class="o-lb" x="290" y="66">Product Owner</text></g>
+            <g class="o-ms now" style="--d:2.4s"><circle class="o-pulse" cx="334.9" cy="316.4" r="8"/><circle class="o-dot" cx="334.9" cy="316.4" r="8"/><text class="o-yr" x="356" y="338">NOW</text><text class="o-lb" x="356" y="357">Data &amp; AI</text></g>
+          </svg>
         </div>
       </div>
       <div class="board-pane">
@@ -955,6 +968,7 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
         <a href="https://github.com/dawiddus" target="_blank" rel="noopener">GitHub <span>↗</span></a>
       </div>
     </div>
+    <div class="offclock reveal"><span class="eq" aria-hidden="true"><i></i><i></i><i></i><i></i></span><p><b>Off the clock:</b> if you ever need a break from data, I make music as <b>Voiceless Carpenter</b>.</p><div class="oc-links"><a href="https://open.spotify.com/search/voiceless%20carpenter" target="_blank" rel="noopener">Spotify ↗</a><a href="https://www.instagram.com/voicelesscarpenter/" target="_blank" rel="noopener">Instagram ↗</a></div></div>
   </div>
 </section>
 </main>
