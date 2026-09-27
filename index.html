@@ -254,7 +254,6 @@ details.more summary{cursor:pointer;color:var(--brand);font-weight:600;font-size
 .contact .links{display:grid;gap:10px}
 .contact .links a{display:flex;justify-content:space-between;align-items:center;padding:14px 16px;border-radius:12px;background:color-mix(in srgb,var(--bg) 10%,transparent);color:var(--bg);text-decoration:none;font-weight:600}
 .contact .links a{gap:10px;overflow-wrap:anywhere}
-.contact .links a.mail{font-size:14px}
 .contact .links a:hover{background:color-mix(in srgb,var(--bg) 18%,transparent)}
 @media (max-width:760px){.contact{grid-template-columns:1fr;padding:30px 22px}}
 footer{padding:36px 0 50px;color:var(--ink-3);font-size:13px}
@@ -412,6 +411,17 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
 .m-list li .kw{font-family:var(--mono);font-size:11px;color:var(--ink-3)}
 .m-gaps li{border-left-color:var(--amber)}
 .out h4.mh{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);margin:18px 0 8px;font-weight:600}
+/* flippable learning-path cards */
+.stop-flip{display:block;width:100%;height:100%;padding:0;border:none;background:none;font:inherit;color:inherit;text-align:left;cursor:pointer;perspective:1000px}
+.sf-inner{display:grid;height:100%;transition:transform .6s cubic-bezier(.2,.8,.2,1);transform-style:preserve-3d}
+.stop-flip.flipped .sf-inner{transform:rotateY(180deg)}
+.sf-inner>.card{grid-area:1/1;backface-visibility:hidden;-webkit-backface-visibility:hidden}
+.stop-flip:hover .sf-front{border-color:var(--brand)}
+.stop .sf-back{transform:rotateY(180deg);background:var(--brand);color:var(--brand-ink);border-color:transparent}
+.stop .sf-back .prov{color:inherit;opacity:.8}
+.stop .sf-back h4{font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;margin:8px 0 2px;opacity:.8;font-weight:600}
+.stop .sf-back p{font-size:12.5px;margin:0;border:none;padding:0;color:inherit;line-height:1.45}
+.sf-hint{font-family:var(--mono);font-size:10.5px;color:var(--ink-3);margin-top:6px}
 .reveal{opacity:0;transform:translateY(14px);transition:opacity .6s ease,transform .6s ease}
 .reveal.in{opacity:1;transform:none}
 @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}.reveal{opacity:1;transform:none}}
@@ -531,11 +541,11 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
   <div class="wrap">
     <div class="sec-head reveal">
       <span class="kicker">The journey</span>
-      <h2>From the hotel front desk to the steering committee</h2>
+      <h2>From first‑line support to the steering committee</h2>
       <p class="lede">An unusual path, and every stop taught me something a Product Owner needs.</p>
     </div>
     <div class="journey">
-      <div class="chapter reveal"><div class="node">01</div><div><span class="yrs">2012–2014</span><h3>Hospitality</h3><p>Shift lead, events, sales offers.</p><div class="learned">Serve the customer under pressure.</div></div></div>
+      <div class="chapter reveal"><div class="node">01</div><div><span class="yrs">2012–2014</span><h3>Customer service</h3><p>Shift lead, events, client offers.</p><div class="learned">Serve the customer under pressure.</div></div></div>
       <div class="chapter reveal"><div class="node">02</div><div><span class="yrs">2014–2020</span><h3>Data operations</h3><p>Infosys (P&amp;G), Barry Callebaut, Flint Group. SAP master data, migrations, a pre‑study in South Africa.</p><div class="learned">Bad data breaks real operations.</div></div></div>
       <div class="chapter reveal"><div class="node">03</div><div><span class="yrs">2020–2023</span><h3>Data governance</h3><p>Takeda &amp; ALDI SÜD. Collibra, SAP MDG, operating models, data ownership.</p><div class="learned">Trust is designed, not assumed.</div></div></div>
       <div class="chapter reveal"><div class="node">04</div><div><span class="yrs">2023–2024</span><h3>Service &amp; delivery</h3><p>IT Service Owner &amp; Coordination Lead. KPIs, vendors, contracts, SoWs.</p><div class="learned">Delivery is a system you run.</div></div></div>
@@ -575,15 +585,36 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
       <div class="team"><h4>What it gives the team</h4><p id="hdTeam"></p></div>
     </div>
 
-    <div class="sub-head reveal"><span class="kicker">The learning path</span><h3>The path I chose as a Product Owner</h3><p class="muted" style="margin:0">Each step picked for one reason: it makes the team better at building AI on our data platform.</p></div>
+    <div class="sub-head reveal"><span class="kicker">The learning path</span><h3>The path I chose as a Product Owner, and how I enabled myself with AI</h3><p class="muted" style="margin:0">Tap a step to see what I learned and how I use it with the team.</p></div>
     <div class="metro">
-      <div class="stop done reveal"><span class="pin"></span><div class="card"><span class="prov">On the job · ALDI SÜD</span><h3>Conversational Analytics on a governed data model</h3><span class="status-tag done">Proven</span><p><b>Team gets:</b> a PO who knows AI is only as good as its data</p></div></div>
-      <div class="stop now reveal"><span class="pin"></span><div class="card"><span class="prov">Anthropic Academy</span><h3>AI Fluency: Framework &amp; Foundations</h3><span class="status-tag now">In progress</span><p><b>Team gets:</b> the 4D framework as a shared way of working with AI</p></div></div>
-      <div class="stop now reveal"><span class="pin"></span><div class="card"><span class="prov">DeepLearning.AI · Coursera</span><h3>Generative AI for Everyone</h3><span class="status-tag now">In progress</span><p><b>Team gets:</b> better use-case choices and honest expectations</p></div></div>
-      <div class="stop next reveal"><span class="pin"></span><div class="card"><span class="prov">PMI</span><h3>Generative AI Overview for Project Managers</h3><span class="status-tag next">Planned</span><p><b>Team gets:</b> GenAI in refinement, reporting and risk logs</p></div></div>
-      <div class="stop next reveal"><span class="pin"></span><div class="card"><span class="prov">Databricks Academy</span><h3>Generative AI Fundamentals</h3><span class="status-tag next">Planned</span><p><b>Team gets:</b> a PO who speaks the platform team's language</p></div></div>
-      <div class="stop next reveal"><span class="pin"></span><div class="card"><span class="prov">Microsoft Learn</span><h3>Azure AI Fundamentals (AI‑900)</h3><span class="status-tag next">Planned</span><p><b>Team gets:</b> the Azure AI services next to our data platform</p></div></div>
-      <div class="stop goal reveal"><span class="pin"></span><div class="card"><span class="prov">Scrum.org · goal</span><h3>PSPO‑AI Essentials certification</h3><span class="status-tag next">Goal</span><p><b>Team gets:</b> Scrum product ownership and AI, formally combined</p></div></div>
+      <div class="stop done reveal"><span class="pin"></span><button class="stop-flip" aria-label="Conversational Analytics on the job: tap to see what I learned"><div class="sf-inner">
+        <div class="card sf-front"><span class="prov">On the job · ALDI SÜD</span><h3>Conversational Analytics on a governed data model</h3><span class="status-tag done">Proven</span><p><b>Team gets:</b> a PO who knows AI is only as good as its data</p><span class="sf-hint">tap → what I learned</span></div>
+        <div class="card sf-back"><span class="prov">What I learned</span><p>AI is only as good as the data model under it. Clear KPI definitions matter more than the model.</p><h4>How I use it as a PO</h4><p>Data readiness and certified KPIs go into the Definition of Done before an AI feature ships.</p></div>
+      </div></button></div>
+      <div class="stop now reveal"><span class="pin"></span><button class="stop-flip" aria-label="AI Fluency: tap to see what I'm learning"><div class="sf-inner">
+        <div class="card sf-front"><span class="prov">Anthropic Academy</span><h3>AI Fluency: Framework &amp; Foundations</h3><span class="status-tag now">In progress</span><p><b>Team gets:</b> the 4D framework as a shared way of working with AI</p><span class="sf-hint">tap → what I'm learning</span></div>
+        <div class="card sf-back"><span class="prov">What I'm learning</span><p>Delegation, Description, Discernment, Diligence: when to hand work to AI and how to check it.</p><h4>How I use it as a PO</h4><p>AI drafts stories and summaries. Priorities and trade‑offs stay with me.</p></div>
+      </div></button></div>
+      <div class="stop now reveal"><span class="pin"></span><button class="stop-flip" aria-label="Generative AI for Everyone: tap to see what I'm learning"><div class="sf-inner">
+        <div class="card sf-front"><span class="prov">DeepLearning.AI · Coursera</span><h3>Generative AI for Everyone</h3><span class="status-tag now">In progress</span><p><b>Team gets:</b> better use-case choices and honest expectations</p><span class="sf-hint">tap → what I'm learning</span></div>
+        <div class="card sf-back"><span class="prov">What I'm learning</span><p>What GenAI can and can't do, and what makes a good use case.</p><h4>How I use it as a PO</h4><p>AI ideas enter the backlog only with clear value, available data and acceptable risk.</p></div>
+      </div></button></div>
+      <div class="stop next reveal"><span class="pin"></span><button class="stop-flip" aria-label="PMI Generative AI Overview: tap to see what I'll learn"><div class="sf-inner">
+        <div class="card sf-front"><span class="prov">PMI</span><h3>Generative AI Overview for Project Managers</h3><span class="status-tag next">Planned</span><p><b>Team gets:</b> GenAI in refinement, reporting and risk logs</p><span class="sf-hint">tap → what I'll learn</span></div>
+        <div class="card sf-back"><span class="prov">What I'll learn</span><p>GenAI across the project lifecycle: planning, risks and reporting.</p><h4>How I'll use it as a PO</h4><p>Clearer steering updates and risk logs, with less admin for the team.</p></div>
+      </div></button></div>
+      <div class="stop next reveal"><span class="pin"></span><button class="stop-flip" aria-label="Databricks Generative AI Fundamentals: tap to see what I'll learn"><div class="sf-inner">
+        <div class="card sf-front"><span class="prov">Databricks Academy</span><h3>Generative AI Fundamentals</h3><span class="status-tag next">Planned</span><p><b>Team gets:</b> a PO who speaks the platform team's language</p><span class="sf-hint">tap → what I'll learn</span></div>
+        <div class="card sf-back"><span class="prov">What I'll learn</span><p>How GenAI runs on the lakehouse: retrieval (RAG), vector search, model serving.</p><h4>How I'll use it as a PO</h4><p>Realistic estimates and better conversations with our Databricks engineers.</p></div>
+      </div></button></div>
+      <div class="stop next reveal"><span class="pin"></span><button class="stop-flip" aria-label="Azure AI Fundamentals: tap to see what I'll learn"><div class="sf-inner">
+        <div class="card sf-front"><span class="prov">Microsoft Learn</span><h3>Azure AI Fundamentals (AI‑900)</h3><span class="status-tag next">Planned</span><p><b>Team gets:</b> the Azure AI services next to our data platform</p><span class="sf-hint">tap → what I'll learn</span></div>
+        <div class="card sf-back"><span class="prov">What I'll learn</span><p>Azure AI services and Microsoft's responsible‑AI principles.</p><h4>How I'll use it as a PO</h4><p>Knowing which service fits a use case before we commit a sprint to it.</p></div>
+      </div></button></div>
+      <div class="stop goal reveal"><span class="pin"></span><button class="stop-flip" aria-label="PSPO-AI Essentials: tap to see why it's my goal"><div class="sf-inner">
+        <div class="card sf-front"><span class="prov">Scrum.org · goal</span><h3>PSPO‑AI Essentials certification</h3><span class="status-tag next">Goal</span><p><b>Team gets:</b> Scrum product ownership and AI, formally combined</p><span class="sf-hint">tap → why it's my goal</span></div>
+        <div class="card sf-back"><span class="prov">Why it's my goal</span><p>It ties everything above to the Scrum way of owning a product.</p><h4>How I'll use it as a PO</h4><p>AI features run on value, evidence and clear accountability, like any other product increment.</p></div>
+      </div></button></div>
     </div>
 
     <div class="sub-head reveal"><span class="kicker">From learning to the team</span><h3>Learn → Try → Teach → Ship</h3><p class="muted" style="margin:0">Learning only counts when the team gets better too. This is the loop I run.</p></div>
@@ -847,7 +878,7 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
       </div>
       <div class="links">
         <a href="https://www.linkedin.com/in/dawid-ciesielski" target="_blank" rel="noopener">LinkedIn <span>↗</span></a>
-        <a class="mail" href="mailto:dawid.ciesielski90@gmail.com">dawid.ciesielski90@gmail.com <span>↗</span></a>
+        <a class="mail" href="mailto:dawid.ciesielski90@gmail.com" title="dawid.ciesielski90@gmail.com">Email <span>↗</span></a>
         <a href="https://github.com/dawiddus" target="_blank" rel="noopener">GitHub <span>↗</span></a>
       </div>
     </div>
@@ -890,7 +921,7 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
   document.querySelectorAll('.reveal').forEach(function(el){io?io.observe(el):el.classList.add('in')});
 
   // flip cards
-  document.querySelectorAll('.flip').forEach(function(f){f.addEventListener('click',function(){f.classList.toggle('flipped')})});
+  document.querySelectorAll('.flip,.stop-flip').forEach(function(f){f.addEventListener('click',function(){f.classList.toggle('flipped')})});
 
   // ---------- Story Refiner ----------
   var req=document.getElementById('req');
