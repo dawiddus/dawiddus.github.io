@@ -77,7 +77,7 @@ header.nav{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--b
 @media (max-width:1040px){.nav-links a:not(.keep){display:none}}
 
 /* hero */
-.hero{padding:72px 0 56px}
+.hero{padding:36px 0 56px}
 .hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:48px;align-items:center}
 .hero h1{font-size:clamp(38px,6vw,68px);margin:16px 0 20px}
 .hero h1 em{font-style:italic;color:var(--brand)}
@@ -360,6 +360,35 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
 @media (max-width:560px){.insights{grid-template-columns:1fr}}
 .sub-head{margin:70px 0 24px;display:grid;gap:8px}
 .sub-head h3{font-size:clamp(22px,2.6vw,28px)}
+/* role lens */
+.lens{display:flex;flex-wrap:wrap;align-items:center;gap:6px;padding:6px;background:var(--surface);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);margin-bottom:34px;width:max-content;max-width:100%}
+.lens-lbl{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);padding:0 8px 0 6px}
+.lens button{font:inherit;font-size:13.5px;font-weight:600;border:none;background:transparent;color:var(--ink-2);padding:8px 12px;border-radius:10px;cursor:pointer}
+.lens button:hover{background:var(--surface-2);color:var(--ink)}
+.lens button.on{background:var(--brand);color:var(--brand-ink)}
+.lens .lens-share{color:var(--brand);font-weight:600;font-size:12.5px}
+.lens .lens-share:hover{background:var(--brand-soft);color:var(--brand)}
+.hero .swap{transition:opacity .25s ease}
+.hero .swap.fade{opacity:0}
+.case .rel{display:none;align-self:flex-start;font-size:12px;font-weight:700;padding:4px 10px;border-radius:999px;background:var(--green-soft);color:var(--green)}
+.case.top .rel{display:inline-flex}
+.case.top{border-color:var(--green)}
+@media (max-width:640px){.lens{width:100%}.lens-lbl{width:100%;padding:4px 6px}.lens button{flex:1 1 auto}}
+
+/* job-ad matcher */
+.match{display:grid;grid-template-columns:.95fr 1.05fr;gap:18px;align-items:start}
+@media (max-width:900px){.match{grid-template-columns:1fr}}
+.match .panel{padding:22px}
+.match textarea{min-height:230px}
+.m-score{display:flex;align-items:center;gap:18px;margin-bottom:16px}
+.m-ring{--p:0;width:86px;height:86px;border-radius:50%;background:conic-gradient(var(--c,var(--brand)) calc(var(--p)*1%),var(--surface-2) 0);display:grid;place-items:center;flex:none;transition:background .4s}
+.m-ring span{width:66px;height:66px;border-radius:50%;background:var(--surface);display:grid;place-items:center;font-family:var(--serif);font-size:22px;font-weight:650}
+.m-list{list-style:none;padding:0;margin:0;display:grid;gap:8px}
+.m-list li{background:var(--surface-2);border-radius:10px;padding:10px 12px;font-size:14px;border-left:3px solid var(--green)}
+.m-list li b{display:block;font-size:13px;color:var(--brand);margin-bottom:2px}
+.m-list li .kw{font-family:var(--mono);font-size:11px;color:var(--ink-3)}
+.m-gaps li{border-left-color:var(--amber)}
+.out h4.mh{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);margin:18px 0 8px;font-weight:600}
 .reveal{opacity:0;transform:translateY(14px);transition:opacity .6s ease,transform .6s ease}
 .reveal.in{opacity:1;transform:none}
 @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}.reveal{opacity:1;transform:none}}
@@ -381,7 +410,7 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
       <a href="#ai-learning">AI learning</a>
       <a href="#cases">Case studies</a>
       <a href="#refiner">Story Refiner</a>
-      <a href="#health">Health check</a>
+      <a href="#match">Match a role</a>
       <a href="#experience">Experience</a>
       <a href="#fast-lane" class="keep">Recruiters</a>
       <button class="theme-btn" id="themeBtn" aria-label="Toggle colour theme">◐</button>
@@ -392,16 +421,17 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
 <main id="top">
 <!-- HERO -->
 <section class="hero">
+  <div class="wrap"><div class="lens" role="group" aria-label="Show the profile for the role you are hiring for"><span class="lens-lbl">Hiring for</span><button data-lens="po" class="on">Product Owner</button><button data-lens="gov">Data Governance &amp; Quality</button><button data-lens="pm">Project / Program</button><button data-lens="lead">Team Lead</button><button class="lens-share" id="lensShare">🔗 Copy link</button></div></div>
   <div class="wrap hero-grid">
     <div>
-      <span class="kicker">Product Owner · Data &amp; AI · Düsseldorf</span>
-      <h1>I keep data products on track, and bring them <em>back to green.</em></h1>
-      <p class="lede">12 years in data, from SAP master data to steering committees. Today I own a governed Azure data model at ALDI SÜD that powers harmonized financial reporting and <strong>AI‑driven Conversational Analytics</strong>. AI can write the user story. Someone still has to own the outcome. That's my job.</p>
+      <span class="kicker swap" id="heroKicker">Product Owner · Data &amp; AI · Düsseldorf</span>
+      <h1 class="swap" id="heroH1">I keep data products on track, and bring them <em>back to green.</em></h1>
+      <p class="lede swap" id="heroLede">12 years in data, from SAP master data to steering committees. Today I own a governed Azure data model at ALDI SÜD that powers harmonized financial reporting and <strong>AI‑driven Conversational Analytics</strong>. AI can write the user story. Someone still has to own the outcome. That's my job.</p>
       <div class="actions">
         <a class="btn btn-primary" href="#refiner">Try my Story Refiner →</a>
         <a class="btn btn-ghost" href="#fast-lane">Recruiter fast lane</a>
       </div>
-      <div class="hero-meta">
+      <div class="hero-meta swap" id="heroChips">
         <span class="chip">Scrum · Backlog · Roadmaps</span>
         <span class="chip">Azure · Databricks · Tableau</span>
         <span class="chip">Data Governance · Collibra</span>
@@ -584,8 +614,8 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
       <h2>Four products, four problems, one pattern</h2>
       <p class="lede">Get the data right, get the people aligned, make progress visible. Each one is a foundation AI needs to be useful.</p>
     </div>
-    <div class="cases">
-      <article class="card case reveal">
+    <div class="cases" id="caseList">
+      <article class="card case reveal" data-case="fin"><span class="rel">★ Most relevant for this role</span>
         <div class="case-top"><span class="kicker">ALDI SÜD · 2026 → now</span><span class="chip">Azure Data Platform</span></div>
         <h3>A governed financial data model for AI-driven insights</h3>
         <dl>
@@ -594,7 +624,7 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
         </dl>
         <div class="ai-angle"><b>AI angle:</b> this model is the ground truth behind Conversational Analytics. The LLM is only as good as the data model under it.</div>
       </article>
-      <article class="card case reveal">
+      <article class="card case reveal" data-case="kpi"><span class="rel">★ Most relevant for this role</span>
         <div class="case-top"><span class="kicker">ALDI SÜD · 2025–2026</span><span class="rag-track"><span class="dot r"></span>→<span class="dot a"></span>→<span class="dot g"></span></span></div>
         <h3>Global KPI harmonization: back to green</h3>
         <dl>
@@ -603,7 +633,7 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
         </dl>
         <div class="ai-angle"><b>AI angle:</b> harmonized KPI definitions are what make an AI's “revenue” mean the same thing in every country.</div>
       </article>
-      <article class="card case reveal">
+      <article class="card case reveal" data-case="dq"><span class="rel">★ Most relevant for this role</span>
         <div class="case-top"><span class="kicker">ALDI SÜD · 2024–2025</span><span class="chip">Data Quality</span></div>
         <h3>Data Quality Reconciliation Solution</h3>
         <dl>
@@ -612,7 +642,7 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
         </dl>
         <div class="ai-angle"><b>AI angle:</b> catching bad data proactively is exactly what keeps AI models and automations from going wrong at scale.</div>
       </article>
-      <article class="card case reveal">
+      <article class="card case reveal" data-case="tak"><span class="rel">★ Most relevant for this role</span>
         <div class="case-top"><span class="kicker">Takeda · 2020–2021</span><span class="chip">Collibra · SAP MDG</span></div>
         <h3>Data governance from zero to operating model</h3>
         <dl>
@@ -730,6 +760,33 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
   </div>
 </section>
 
+<!-- JOB AD MATCHER -->
+<section id="match" style="background:var(--surface);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="kicker">For recruiters · 60 seconds</span>
+      <h2>Paste your job ad. See the evidence.</h2>
+      <p class="lede">English or German. The page checks your requirements against my real experience, shows where each one is proven, and is honest about what's not on my CV.</p>
+    </div>
+    <div class="match">
+      <div class="card panel">
+        <label class="lbl" for="jd">Job description</label>
+        <textarea id="jd" placeholder="Paste the job ad here, e.g. requirements and responsibilities…"></textarea>
+        <div class="examples" aria-label="Sample job ads">
+          <button data-jd="gov">Sample: Data Governance Manager</button>
+          <button data-jd="pm">Sample: Senior Project Manager</button>
+          <button data-jd="po">Sample: Data Product Owner</button>
+        </div>
+        <button class="btn btn-primary" id="matchBtn" style="width:100%;justify-content:center">Check the fit →</button>
+        <p class="honest">Runs only in your browser. Nothing you paste is sent or stored.</p>
+      </div>
+      <div class="card panel out" id="mOut">
+        <div class="out-empty"><div><div style="font-size:34px;margin-bottom:8px">🔎</div>Paste a job ad or try a sample, then hit <b>Check the fit</b>.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- RECRUITER FAST LANE -->
 <section id="fast-lane">
   <div class="wrap">
@@ -745,7 +802,7 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
       </div>
       <div class="card reveal">
         <h3>Good fit if you're hiring a…</h3>
-        <ul class="fit">
+        <ul class="fit" id="fitList">
           <li><span class="dot g"></span><span><b>Senior Product Owner</b>, Data &amp; Analytics / AI</span></li>
           <li><span class="dot g"></span><span><b>Product Manager</b>, data platforms or AI‑enabled analytics</span></li>
           <li><span class="dot g"></span><span><b>Project / Program Manager</b>, digital or data transformation</span></li>
@@ -942,6 +999,110 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
     t.innerHTML='<b>'+n+' of 6 ready.</b> '+(n===6?'Sprint-ready: ship a thin slice and measure it.':n>=4?'Close: refine the open boxes before committing.':n>0?'Not yet: this is a discovery item, not a sprint item.':'Tick the boxes you can answer.');
   }
   boxes.forEach(function(b){b.addEventListener('click',function(){var on=b.classList.toggle('ok');b.setAttribute('aria-pressed',on?'true':'false');cvUpdate();})});
+
+  // ---------- Role lens ----------
+  var LENS={
+    po:{name:'Product Owner',title:'Dawid Ciesielski · Product Owner, Data & AI',kicker:'Product Owner · Data &amp; AI · Düsseldorf',
+      h1:'I keep data products on track, and bring them <em>back to green.</em>',
+      lede:'12 years in data, from SAP master data to steering committees. Today I own a governed Azure data model at ALDI SÜD that powers harmonized financial reporting and <strong>AI‑driven Conversational Analytics</strong>. AI can write the user story. Someone still has to own the outcome. That\'s my job.',
+      chips:['Scrum · Backlog · Roadmaps','Azure · Databricks · Tableau','Data Governance · Collibra','Steering &amp; Risk'],cases:['fin','kpi','dq','tak'],
+      pitch:'Dawid Ciesielski is a Product Owner at ALDI SÜD with 12 years in data. He steers teams delivering governed data products on Azure, Databricks and Tableau, including the data model behind AI‑driven Conversational Analytics. He has brought a global KPI initiative back to green, built data governance from scratch at Takeda, and runs Sprint Reviews and steering committees with senior leadership. Based in Düsseldorf.',
+      fit:[['g','Senior / Data Product Owner','data, analytics or AI'],['g','Product Manager','data lakehouse, analytics, digital products'],['g','IT Product Owner','business and IT alignment'],['a','Product Analytics Manager','with a delivery focus']]},
+    gov:{name:'Data Governance & Quality',title:'Dawid Ciesielski · Data Governance & Data Quality',kicker:'Data Governance · Data Quality · Master Data',
+      h1:'Trusted data is a product. <em>I\'ve built it for 12 years.</em>',
+      lede:'From hands‑on SAP master data to Collibra, SAP MDG, data ownership models and a Data Quality Reconciliation Solution that stops store incidents at ALDI SÜD. Governance that people actually use, and that <strong>AI can safely build on</strong>.',
+      chips:['Collibra · Syniti · SAP MDG','Data quality rules &amp; reconciliation','Data ownership &amp; operating models','Metadata &amp; lineage'],cases:['tak','dq','kpi','fin'],
+      pitch:'Dawid Ciesielski is a data governance and data quality leader with 12 years in data. He implemented Collibra and SAP MDG 1909 at Takeda, designed the governance operating model and data ownership framework, owned the Collibra catalog and a Data Quality Reconciliation Solution at ALDI SÜD, and started out in hands‑on SAP master data. Based in Düsseldorf.',
+      fit:[['g','Data Governance Manager / Lead','incl. Data &amp; AI Governance'],['g','Data Quality Manager','rules, reconciliation, monitoring'],['g','Master Data Management Lead','SAP, MDG, migrations'],['g','Data Foundations / Metadata Lead','catalogs, lineage, standards']]},
+    pm:{name:'Project / Program',title:'Dawid Ciesielski · Project & Program Manager, Data',kicker:'Project · Program · PMO · Transformation',
+      h1:'Red projects are where I do my <em>best work.</em>',
+      lede:'Steering committees, Back‑to‑Green plans, delivery roadmaps, vendor contracts and SoWs, hybrid internal and external teams. I bring structure, an <strong>honest status</strong>, and delivery that business and IT both trust.',
+      chips:['Steering &amp; RAG reporting','Risk &amp; mitigation','Vendor management · SoWs','Business &amp; IT alignment'],cases:['kpi','fin','dq','tak'],
+      pitch:'Dawid Ciesielski is a delivery leader at ALDI SÜD with 12 years in data and IT. He brought a global KPI harmonization initiative from red back to green, reports to Strategic & Investment Steering with senior leadership, manages vendors through contracts, SoWs and value assurance, and has coordinated SAP migrations across countries. Based in Düsseldorf.',
+      fit:[['g','Senior Project / Program Manager','data, IT or digital'],['g','PMO Manager','governance, reporting, steering'],['g','Transformation Manager','data transformation programmes'],['g','IT Business Partner','business and IT alignment']]},
+    lead:{name:'Team Lead',title:'Dawid Ciesielski · Team Lead, Data & Governance',kicker:'Team Lead · Data Management · BI · Governance',
+      h1:'I build teams where ownership is clear and <em>progress is visible.</em>',
+      lede:'Stream Lead structures, service ownership, vendor teams and hybrid squads. Plus a trained teacher\'s instinct for <strong>growing people</strong>, from Data Literacy series to hands‑on SAP trainings.',
+      chips:['Team structure &amp; ownership','Service ownership · KPIs','Coaching &amp; data literacy','Hybrid internal/external teams'],cases:['kpi','dq','tak','fin'],
+      pitch:'Dawid Ciesielski leads data teams at ALDI SÜD. He restructured a hybrid internal/external team into Stream Leads with clear ownership, ran the Data Quality Service as IT Service Owner, led a dedicated team for P&G North America earlier in his career, and is a trained teacher who has run Data Literacy programmes. Based in Düsseldorf.',
+      fit:[['g','Team Lead Data Management / Operations','incl. master data'],['g','Team Lead BI &amp; Insights','enablement and adoption'],['g','Team Lead Data &amp; AI Governance','governance with delivery'],['a','Head of Data Governance','a step up, with a strong team']]}
+  };
+  var lensBtns=[].slice.call(document.querySelectorAll('.lens [data-lens]'));
+  function setLens(k,user){
+    if(!LENS[k]) k='po'; var L=LENS[k];
+    lensBtns.forEach(function(b){var on=b.getAttribute('data-lens')===k;b.classList.toggle('on',on);b.setAttribute('aria-pressed',on?'true':'false')});
+    var sw=[].slice.call(document.querySelectorAll('.hero .swap'));
+    function fill(){
+      document.getElementById('heroKicker').innerHTML=L.kicker;
+      document.getElementById('heroH1').innerHTML=L.h1;
+      document.getElementById('heroLede').innerHTML=L.lede;
+      document.getElementById('heroChips').innerHTML=L.chips.map(function(c){return '<span class="chip">'+c+'</span>'}).join('');
+      sw.forEach(function(e){e.classList.remove('fade')});
+    }
+    if(user){sw.forEach(function(e){e.classList.add('fade')});setTimeout(fill,220);}else fill();
+    document.getElementById('pitchTxt').textContent=L.pitch;
+    document.getElementById('fitList').innerHTML=L.fit.map(function(f){return '<li><span class="dot '+f[0]+'"></span><span><b>'+f[1]+'</b>, '+f[2]+'</span></li>'}).join('');
+    var list=document.getElementById('caseList');
+    L.cases.forEach(function(id,i){var a=list.querySelector('[data-case="'+id+'"]'); if(a){a.classList.toggle('top',i===0); list.appendChild(a);}});
+    document.title=L.title;
+    if(user){try{var u=new URL(location.href); if(k==='po')u.searchParams.delete('role'); else u.searchParams.set('role',k); u.hash=''; history.replaceState(null,'',u.toString());}catch(e){}}
+  }
+  lensBtns.forEach(function(b){b.addEventListener('click',function(){setLens(b.getAttribute('data-lens'),true)})});
+  document.getElementById('lensShare').addEventListener('click',function(){
+    var t=location.href.split('#')[0];
+    if(navigator.clipboard){navigator.clipboard.writeText(t).then(function(){toast('Link to this version copied')},function(){toast(t)});}else toast(t);
+  });
+  var startRole=null; try{startRole=new URLSearchParams(location.search).get('role');}catch(e){}
+  setLens(startRole||'po',false);
+
+  // ---------- Job ad matcher ----------
+  var EV=[
+    ['Product ownership','po','product owner|product manager|produktmanag|product management|backlog|user stor|scrum|agil|roadmap|sprint','Product Owner at ALDI SÜD since 2024: roadmap, backlog, Sprint Goals, Definition of Done, Sprint Reviews with business users.'],
+    ['Data governance','gov','governance|data owner|datenverantwort|steward|collibra|data catalog|datenkatalog|metadat|lineage|data polic','Implemented Collibra and the governance operating model at Takeda; Collibra Application Owner and Syniti catalog lead at ALDI SÜD.'],
+    ['Data quality','gov','data quality|datenqualit|reconcil|cleansing|bereinig|quality rule','Owned the Data Quality Reconciliation Solution and was IT Service Owner for the Data Quality Service at ALDI SÜD.'],
+    ['Master data & SAP','gov','master data|stammdaten|\\bmdm\\b|\\bsap\\b|\\bmdg\\b|migration|s/4|\\berp\\b','SAP master data and migrations at Barry Callebaut and Flint Group; SAP MDG 1909 for Business Partner at Takeda.'],
+    ['Project & program delivery','pm','project manag|projektleit|projektmanag|program|\\bpmo\\b|portfolio|transformation|delivery|milestone|meilenstein','Built the delivery roadmap and Back-to-Green plan that improved a global KPI initiative\'s status.'],
+    ['Risk management','pm','\\brisk|risiko','Identifies, assesses and mitigates delivery risks, and presents them to senior leadership.'],
+    ['Stakeholders & steering','pm','stakeholder|steering|lenkungs|steuerkreis|senior management|executive|c-level|management board','Represents the team in Strategic & Investment Steering; set up a direct reporting line to Management.'],
+    ['Leadership','lead','team lead|teamleit|leadership|f(ü|ue)hrung|lead a team|manage a team|people manag|mentor|head of','Led hybrid internal/external teams with a Stream Lead structure; led a dedicated P&G North America team at Infosys.'],
+    ['Vendor management','pm','vendor|supplier|lieferant|dienstleister|contract|vertrag|\\bsow\\b|statement of work|outsourc|external partner','Coordinated external vendors: Vendor Value Assurance Package, governance models, contracts, SoWs and deliverable approval.'],
+    ['Cloud data platforms','po','azure|databricks|lakehouse|data platform|datenplattform|data lake|\\bcloud','Owns data products on Azure Data Platform and Databricks.'],
+    ['BI, KPIs & analytics','po','tableau|power ?bi|business intelligence|\\bbi\\b|reporting|\\bkpi|dashboard|analytics|insights','Global KPI harmonization across Azure/Databricks and Tableau; governed financial reporting data model.'],
+    ['AI','po','\\bai\\b|\\bki\\b|artificial intelligence|k(ü|ue)nstliche intelligenz|genai|generative|\\bllm|machine learning','PO for the data model behind AI-driven Conversational Analytics, plus an active AI learning path (see above).'],
+    ['Training & change','lead','training|schulung|enablement|change manag|adoption|literacy|workshop|coaching','Ran a Data Literacy training series and SAP/tool trainings; English teacher by training (Master\'s degree).'],
+    ['IT service management','lead','\\bitil|service owner|it service|\\bsla|incident|service manag','IT Service Owner: service KPIs, internal policies, continuous improvement and platform stabilization.'],
+    ['Requirements & processes','pm','requirement|anforderung|business analys|process|prozess|solution design|business partner','Translated business requirements into SAP MDG rules; contributed to Solution Architecture for the Central Data Office.'],
+    ['International environment','pm','international|global|cross-functional|cross functional|englisch|english','Global initiatives, with teams in Poland, Germany, North America and South Africa.'],
+    ['Retail & FMCG','po','retail|einzelhandel|\\bstores?\\b|filial|fmcg|consumer goods','5+ years at ALDI SÜD; P&G, Barry Callebaut and Flint Group before that.'],
+    ['Pharma','gov','pharma|life science|\\bgxp','Master data governance at Takeda (pharma).']
+  ];
+  var GAPS=[['\\bpmp\\b','i','PMP certification'],['prince2','i','PRINCE2'],['\\bSAFe\\b','','SAFe'],['\\bpython\\b','i','Python'],['\\bsql\\b','i','Hands-on SQL'],['deutsch|german|verhandlungssicher','i','German language level'],['disziplinar|disciplinary','i','Disciplinary leadership scope'],['identity|\\biam\\b|access management','i','Identity & Access Management domain'],['\\bcdmp\\b|\\bdama\\b','i','DAMA / CDMP certification'],['power ?bi','i','Power BI (my BI tool so far is Tableau)']];
+  var SAMPLES={
+    gov:'We are looking for a Data Governance Manager to establish data ownership and stewardship, define data quality rules and KPIs, run our data catalog (Collibra) and metadata management, and improve master data quality in SAP. You align stakeholders across business and IT, drive training and adoption, and report to senior management. Experience with Azure and a DAMA/CDMP certification is a plus. Fluent German and English.',
+    pm:'Senior Project Manager for our data transformation programme. You lead cross-functional teams and external vendors, manage scope, budget, milestones and risks, report to the steering committee, and manage contracts and SoWs. Agile and classic methods; PMP or PRINCE2 is a plus. International environment, English required.',
+    po:'Data Product Owner for our analytics platform on Azure Databricks. You own the product roadmap and backlog, write user stories with the team, align stakeholders, and bring GenAI use cases into our BI and KPI reporting in Power BI. Scrum experience required.'
+  };
+  var jd=document.getElementById('jd');
+  document.querySelectorAll('[data-jd]').forEach(function(b){b.addEventListener('click',function(){jd.value=SAMPLES[b.getAttribute('data-jd')];runMatch();})});
+  function runMatch(){
+    var text=jd.value.trim(), out=document.getElementById('mOut');
+    if(text.length<40){jd.focus();toast('Paste a bit more of the job ad');return;}
+    var hits=EV.map(function(e){var m=text.match(new RegExp(e[2],'gi'));if(!m)return null;var u=[];m.forEach(function(x){x=x.toLowerCase();if(u.indexOf(x)<0)u.push(x)});return {t:e[0],l:e[1],p:e[3],kw:u.slice(0,4)};}).filter(Boolean);
+    var gaps=GAPS.filter(function(g){return new RegExp(g[0],g[1]).test(text)}).map(function(g){return g[2]});
+    var total=hits.length+gaps.length, pct=total?Math.round(hits.length/total*100):0;
+    var label=hits.length<3?'Paste more of the ad for a better read':pct>=80?'Strong match':pct>=60?'Good match':'Partial match';
+    var col=pct>=80?'var(--green)':pct>=60?'var(--amber)':'var(--red)';
+    var cnt={};hits.forEach(function(h){cnt[h.l]=(cnt[h.l]||0)+1});
+    var best='po',bn=-1;Object.keys(cnt).forEach(function(k){if(cnt[k]>bn){bn=cnt[k];best=k}});
+    var h='<div class="m-score"><div class="m-ring" style="--p:'+pct+';--c:'+col+'"><span>'+pct+'%</span></div><div><h3 style="font-size:22px">'+label+'</h3><p class="muted small" style="margin:4px 0 0">'+hits.length+' of '+total+' areas this page can recognise in your ad are backed by real experience.</p></div></div>';
+    h+='<h4 class="mh">Proven in my experience</h4><ul class="m-list">'+hits.map(function(x){return '<li><b>'+esc(x.t)+'</b>'+esc(x.p)+'<br><span class="kw">matched: '+esc(x.kw.join(', '))+'</span></li>'}).join('')+'</ul>';
+    if(gaps.length) h+='<h4 class="mh">Not on my CV yet, happy to discuss</h4><ul class="m-list m-gaps">'+gaps.map(function(g){return '<li>'+esc(g)+'</li>'}).join('')+'</ul>';
+    h+='<div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:18px"><button class="btn btn-primary" id="mLens">See my '+esc(LENS[best].name)+' profile ↑</button><a class="btn btn-ghost" href="#contact">Contact me</a></div>';
+    out.innerHTML=h;
+    document.getElementById('mLens').addEventListener('click',function(){setLens(best,true);window.scrollTo({top:0,behavior:'smooth'});});
+    if(window.innerWidth<900) out.scrollIntoView({behavior:'smooth',block:'start'});
+  }
+  document.getElementById('matchBtn').addEventListener('click',runMatch);
 
   // copy pitch
   document.getElementById('copyPitch').addEventListener('click',function(){
